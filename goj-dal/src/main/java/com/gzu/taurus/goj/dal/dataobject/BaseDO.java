@@ -48,6 +48,10 @@ public class BaseDO implements Serializable, Cloneable {
 		return super.clone();
 	}
 
+	/***************************************************************************/
+	/*************************** Getter Setter *********************************/
+	/***************************************************************************/
+
 	public Integer getStart_row() {
 		if (start_row < 0)
 			start_row = 0;

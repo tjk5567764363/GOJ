@@ -2,7 +2,6 @@ package com.gzu.taurus.goj.dal.dataobject.user;
 
 import com.gzu.taurus.goj.dal.dataobject.BaseDO;
 
-
 /**
  * UserDO
  *
@@ -13,6 +12,9 @@ public class UserDO extends BaseDO {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 
+	/** ID */
+	private Long id;
+
 	/** 账号 */
 	private String account;
 
@@ -22,8 +24,24 @@ public class UserDO extends BaseDO {
 	/** 昵称 */
 	private String nick_name;
 
+	/** 签名 */
+	private String signature;
+
 	/** 年龄 */
 	private Integer age;
+
+	/** 邮箱地址 */
+	private String email;
+
+	/** 电话 */
+	private String tel;
+
+	/** 学校 */
+	private String school;
+
+	/***************************************************************************/
+	/*************************** Getter Setter *********************************/
+	/***************************************************************************/
 
 	public String getAccount() {
 		return account;
@@ -55,5 +73,45 @@ public class UserDO extends BaseDO {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public String getSignature() {
+		return signature;
+	}
+
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 }
