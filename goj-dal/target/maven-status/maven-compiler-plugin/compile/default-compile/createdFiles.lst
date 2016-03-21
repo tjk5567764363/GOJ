@@ -1,0 +1,8 @@
+com/gzu/taurus/goj/dal/dao/problem/ProblemDAO.class
+com/gzu/taurus/goj/dal/dataobject/SubmitDO.class
+com/gzu/taurus/goj/dal/dataobject/BaseDO.class
+com/gzu/taurus/goj/dal/dataobject/contest/ContestDO.class
+com/gzu/taurus/goj/dal/dao/user/UserDAO.class
+com/gzu/taurus/goj/dal/dataobject/contest/ContestProblemDO.class
+com/gzu/taurus/goj/dal/dataobject/user/UserDO.class
+com/gzu/taurus/goj/dal/dataobject/problem/ProblemDO.class

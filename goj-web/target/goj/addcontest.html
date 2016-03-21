@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/base.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <nav></nav>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="problemlist.html">Problem</a></li>
+                <li><a href="status.html">Status</a></li>
+                <li><a href="ranklist.html">Ranklist</a></li>
+                <li class="active"><a href="#">Contest</a></li>
+                <li class="dropdown"></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Problem Id">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">TJK<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Exit</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <div class="col-md-6">
+        <div class="block block-info">
+            <div class="heading">Add Contest</div>
+            <table class="table table-bordered tdcenter">
+                <tr>
+                    <th>Title</th>
+                    <td><input class="form-control input-sm" type="test" /></td>
+                </tr>
+                <tr style="text-align: left;">
+                    <th>Begin Time</th>
+                    <td class="form-group-sm form-inline">
+                        <input type="date" class="form-control"/>&nbsp;
+                        <input id="hour" maxlength="2" type="text" value="0" class="form-control width-mini">&nbsp;:&nbsp;
+                        <input id="min" maxlength="2" type="text" value="0" class="form-control width-mini">
+                    </td>
+                </tr>
+                <tr style="text-align: left;">
+                    <th>Length</th>
+                    <td class="form-group-sm form-inline">
+                        <input id="dd" maxlength="2" type="text" value="0" class="form-control width-mini">&nbsp;天&nbsp;
+                        <input id="hh" maxlength="2" type="text" value="5" class="form-control width-mini">&nbsp;:&nbsp;
+                        <input id="mm" maxlength="2" type="text" value="0" class="form-control width-mini">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td class="form-group-sm">
+                        <input id="psw" type="password" value="" class="form-control">
+                        <span class="text-info">Leave blank to make it Public.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><textarea id="desc" type="text" rows="5" class="form-control"></textarea></td>
+                </tr>
+                <tr>
+                    <th>Announcement</th>
+                    <td><textarea id="anc" type="text" rows="5" class="form-control"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="block block-info">
+            <table class="table table-bordered tdcenter">
+                <thead>
+                    <tr>
+                        <th width="60px"><a id="add" href="javascript:;">+</a></th>
+                        <th width="100px">Probleam ID</th>
+                        <th width="60px">NO</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="javascript:;">x</a></td>
+                        <td><input type="text" class="form-control input-sm"/></td>
+                        <td>A</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-default">Submit</a>
+    </div>
+</div>
+</body>
+</html>

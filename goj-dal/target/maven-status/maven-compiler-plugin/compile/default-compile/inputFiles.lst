@@ -1,0 +1,8 @@
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dataobject/BaseDO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dataobject/user/UserDO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dataobject/contest/ContestProblemDO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dataobject/problem/ProblemDO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dataobject/contest/ContestDO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dataobject/SubmitDO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dao/user/UserDAO.java
+/Users/tangjunkai/Desktop/code/WorkSpace/goj/goj-dal/src/main/java/com/gzu/taurus/goj/dal/dao/problem/ProblemDAO.java

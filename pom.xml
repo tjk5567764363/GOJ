@@ -18,6 +18,28 @@
 	<!-- 库依赖 -->
 	<dependencyManagement>
 		<dependencies>
+			<!-- 模块依赖 -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>goj-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>goj-dal</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>goj-bll</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>goj-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<!-- Spring -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -82,9 +104,16 @@
 				<version>3.3.1</version>
 			</dependency>
 
+			<!-- MySQL Driver -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.38</version>
+			</dependency>
+
 			<!-- 工具包依赖 begin -->
-			<!-- Apache Commons  -->
-			<dependency> 
+			<!-- Apache Commons -->
+			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
 				<version>3.4</version>
@@ -94,14 +123,14 @@
 				<artifactId>commons-codec</artifactId>
 				<version>1.10</version>
 			</dependency>
-			
+
 			<!-- fasejson -->
-			<dependency> 
+			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>1.1.15</version>
 			</dependency>
-			
+
 			<!-- guava -->
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -110,14 +139,31 @@
 			</dependency>
 			<!-- 工具包依赖 end -->
 
+			<!-- Servlet && Jsp -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.2</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
+	<build>
+		<finalName>goj</finalName>
+	</build>
 
 	<!-- modules -->
 	<modules>
-		<module>goj-web</module>
+		<module>goj-common</module>
 		<module>goj-dal</module>
 		<module>goj-bll</module>
-		<module>goj-common</module>
+		<module>goj-web</module>
 	</modules>
 </project>
