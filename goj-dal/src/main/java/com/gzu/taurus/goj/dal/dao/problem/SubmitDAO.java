@@ -4,53 +4,53 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
+import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
 
 /**
- * ProblemDAO
+ * SubmitDAO
  *
  * @Author tangjunkai
- * @CreateDate 2016年3月20日
+ * @CreateDate 2016年3月22日
  */
 @Repository
-public interface ProblemDAO {
+public interface SubmitDAO {
 	/**
-	 * createProblem
+	 * createSubmit
 	 *
 	 * @Author tangjunkai
 	 * @CreateDate 2016年3月22日
-	 * @param problem
+	 * @param submit
 	 * @return
 	 */
-	int createProblem(ProblemDO problem);
+	int createSubmit(SubmitDO submit);
 
 	/**
-	 * getProblem
+	 * getSubmit
 	 *
 	 * @Author tangjunkai
 	 * @CreateDate 2016年3月22日
-	 * @param problem
+	 * @param submit
 	 * @return
 	 */
-	ProblemDO getProblem(ProblemDO problem);
+	SubmitDO getSubmit(SubmitDO submit);
 
 	/**
-	 * findProblems
+	 * findSubmits
 	 *
 	 * @Author tangjunkai
 	 * @CreateDate 2016年3月22日
-	 * @param problem
+	 * @param submit
 	 * @return
 	 */
-	List<ProblemDO> findProblems(ProblemDO problem);
+	List<SubmitDO> findSubmits(SubmitDO submit);
 
 	/**
-	 * modifyProblem
+	 * modifySubmit
 	 *
 	 * @Author tangjunkai
 	 * @CreateDate 2016年3月22日
-	 * @param problem
+	 * @param submit
 	 * @return
 	 */
-	int modifyProblem(ProblemDO problem);
+	int modifySubmit(SubmitDO submit);
 }

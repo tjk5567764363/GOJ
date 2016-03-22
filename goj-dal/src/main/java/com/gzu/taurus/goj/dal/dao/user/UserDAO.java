@@ -2,6 +2,8 @@ package com.gzu.taurus.goj.dal.dao.user;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
 
 /**
@@ -10,6 +12,7 @@ import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
  * @Author tangjunkai
  * @CreateDate 2016年3月20日
  */
+@Repository
 public interface UserDAO {
 	/**
 	 * 创建User

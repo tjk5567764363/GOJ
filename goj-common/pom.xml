@@ -9,6 +9,12 @@
 	<name>goj-common</name>
 
 	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
 		<!-- 工具包依赖 begin -->
 		<!-- Apache Commons -->
 		<dependency>

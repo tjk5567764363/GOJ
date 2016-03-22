@@ -1,4 +1,6 @@
-package com.gzu.taurus.goj.dal.dataobject;
+package com.gzu.taurus.goj.dal.dataobject.problem;
+
+import com.gzu.taurus.goj.dal.dataobject.BaseDO;
 
 /**
  * SubmitDO

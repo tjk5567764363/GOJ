@@ -2,6 +2,8 @@ package com.gzu.taurus.goj.dal.dao.contest;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
 
 /**
@@ -10,6 +12,7 @@ import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
  * @Author tangjunkai
  * @CreateDate 2016年3月22日
  */
+@Repository
 public interface ContestDAO {
 	/**
 	 * createContest
