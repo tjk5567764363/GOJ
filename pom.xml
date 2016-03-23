@@ -2,18 +2,44 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gzu.taurus.goj</groupId>
 	<artifactId>goj</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1${goj.version.ext}</version>
 	<packaging>pom</packaging>
 	<name>goj</name>
 	<description>GZU Online Judge</description>
 
 	<properties>
-		<goj-web>0.0.1</goj-web>
-		<goj-dal>0.0.1</goj-dal>
-		<goj-bll>0.0.1</goj-bll>
-		<goj-common>0.0.1</goj-common>
 		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>
 	</properties>
+
+	<profiles>
+		<!-- 默认开发环境 -->
+		<profile>
+			<id>dev</id>
+			<properties>
+				<prop>goj_dev</prop>
+				<goj.version.ext>-SNAPSHOT</goj.version.ext>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<!-- 测试环境 -->
+		<profile>
+			<id>test</id>
+			<properties>
+				<prop>goj_test</prop>
+				<goj.version.ext>-SNAPSHOT</goj.version.ext>
+			</properties>
+		</profile>
+		<!-- 生产环境 -->
+		<profile>
+			<id>real</id>
+			<properties>
+				<prop>goj_real</prop>
+				<goj.version.ext/>
+			</properties>
+		</profile>
+	</profiles>
 
 	<!-- 库依赖 -->
 	<dependencyManagement>
@@ -154,12 +180,14 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<build>
 		<finalName>goj</finalName>
+		<filters>
+			<filter>../${prop}.properties</filter>
+		</filters>
 	</build>
 
-	<!-- modules -->
 	<modules>
 		<module>goj-common</module>
 		<module>goj-dal</module>

@@ -1,8 +1,11 @@
+com/gzu/taurus/goj/dal/dataobject/problem/SubmitDO.class
 com/gzu/taurus/goj/dal/dao/problem/ProblemDAO.class
-com/gzu/taurus/goj/dal/dataobject/SubmitDO.class
-com/gzu/taurus/goj/dal/dataobject/BaseDO.class
 com/gzu/taurus/goj/dal/dataobject/contest/ContestDO.class
-com/gzu/taurus/goj/dal/dao/user/UserDAO.class
+com/gzu/taurus/goj/dal/dataobject/BaseDO.class
+com/gzu/taurus/goj/dal/dao/contest/ContestDAO.class
 com/gzu/taurus/goj/dal/dataobject/contest/ContestProblemDO.class
+com/gzu/taurus/goj/dal/dao/user/UserDAO.class
+com/gzu/taurus/goj/dal/dao/problem/SubmitDAO.class
 com/gzu/taurus/goj/dal/dataobject/user/UserDO.class
 com/gzu/taurus/goj/dal/dataobject/problem/ProblemDO.class
+com/gzu/taurus/goj/dal/dao/contest/ContestProblemDAO.class
