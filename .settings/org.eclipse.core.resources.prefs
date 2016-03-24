@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 encoding/goj_dev.properties=UTF-8
+encoding/goj_real.properties=UTF-8
+encoding/goj_test.properties=UTF-8
