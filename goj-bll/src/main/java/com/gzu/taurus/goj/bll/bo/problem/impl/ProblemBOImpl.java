@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
+import com.gzu.taurus.goj.common.util.AssertUtil;
 import com.gzu.taurus.goj.dal.dao.problem.ProblemDAO;
 import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
 
@@ -26,8 +27,9 @@ public class ProblemBOImpl implements ProblemBO {
 	}
 
 	public ProblemDO getProblem(ProblemDO problem) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(problem);
+
+		return problemDAO.getProblem(problem);
 	}
 
 	public List<ProblemDO> findProblems(ProblemDO problem) {

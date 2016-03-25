@@ -9,6 +9,13 @@
 	<name>goj-dal</name>
 
 	<dependencies>
+		<!-- 模块依赖 -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>goj-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
