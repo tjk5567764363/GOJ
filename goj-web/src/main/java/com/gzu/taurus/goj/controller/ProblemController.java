@@ -21,7 +21,7 @@ public class ProblemController {
 
 		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(id));
 
-		if (problemDB == null || !problemDB.getId().equals("1000"))
+		if (problemDB == null)
 			return "problemlist";
 		else
 			return "problem";

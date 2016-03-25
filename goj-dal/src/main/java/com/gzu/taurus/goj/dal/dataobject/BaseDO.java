@@ -39,11 +39,6 @@ public class BaseDO implements Serializable, Cloneable {
 	private Date update_time;
 
 	@Override
-	public String toString() {
-		return null;
-	}
-
-	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		return super.clone();
 	}
