@@ -21,6 +21,8 @@ public class ProblemController {
 
 		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(id));
 
+		model.addAttribute("problem", problemDB);
+
 		if (problemDB == null)
 			return "problemlist";
 		else
