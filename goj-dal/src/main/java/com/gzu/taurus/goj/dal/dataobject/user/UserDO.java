@@ -39,6 +39,13 @@ public class UserDO extends BaseDO {
 	/** 学校 */
 	private String school;
 
+	public UserDO() {
+	}
+
+	public UserDO(String account) {
+		this.account = account;
+	}
+
 	/***************************************************************************/
 	/*************************** Getter Setter *********************************/
 	/***************************************************************************/

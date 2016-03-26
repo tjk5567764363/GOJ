@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gzu.taurus.goj.dal.dao.user.UserDAO">
+
+	<resultMap type="user" id="userResultMap" />
+
 	<insert id="createUser" parameterType="user">
-		INSERT INTO USER
+		INSERT INTO user
 		(
 		id,
 		account,
@@ -34,14 +37,14 @@
 		)
 	</insert>
 
-	<select id="getUser">
+	<select id="getUser" parameterType="user" resultType="user">
 		<include refid="SelectUser" />
 		<where>
-			id = #{id}
+			account = #{account}
 		</where>
 	</select>
 
-	<select id="findUsers">
+	<select id="findUsers" parameterType="user" resultType="user">
 		<include refid="SelectUser" />
 		<include refid="UserWhereCondition" />
 	</select>
@@ -62,7 +65,7 @@
 		status,
 		create_time,
 		update_time
-		FROM USER
+		FROM user
 	</sql>
 
 	<sql id="UserWhereCondition">

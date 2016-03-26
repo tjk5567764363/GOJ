@@ -21,9 +21,10 @@ h3.problem-header {
     margin: 0 0 10px;
 }
 
-.istyle em {
+.istyle, em {
     font-size: 125%;
     font-family: times new roman,sans-serif;
+    color: #3069BE;
 }
 
 pre.sample {

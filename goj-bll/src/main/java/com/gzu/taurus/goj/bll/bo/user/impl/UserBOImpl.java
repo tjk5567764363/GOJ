@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.taurus.goj.bll.bo.user.interfaces.UserBO;
+import com.gzu.taurus.goj.common.util.AssertUtil;
 import com.gzu.taurus.goj.dal.dao.user.UserDAO;
 import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
 
@@ -26,8 +27,9 @@ public class UserBOImpl implements UserBO {
 	}
 
 	public UserDO getUser(UserDO user) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(user);
+
+		return userDAO.getUser(user);
 	}
 
 	public List<UserDO> findUsers(UserDO user) {
