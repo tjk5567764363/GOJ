@@ -5,15 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
 
-@RestController
 @RequestMapping
-public class ProblemController {
+public class ProblemController extends BaseController {
 	@Autowired
 	private ProblemBO problemBO;
 
@@ -27,6 +25,6 @@ public class ProblemController {
 		if (problemDB == null)
 			return WebConstant.PROBLEMLIST;
 		else
-			return "problem";
+			return WebConstant.PROBLEM;
 	}
 }

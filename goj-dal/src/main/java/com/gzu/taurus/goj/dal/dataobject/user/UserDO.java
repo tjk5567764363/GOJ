@@ -39,6 +39,9 @@ public class UserDO extends BaseDO {
 	/** 学校 */
 	private String school;
 
+	/** 等级 */
+	private Integer level;
+
 	public UserDO() {
 	}
 
@@ -120,5 +123,13 @@ public class UserDO extends BaseDO {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+
+	public Integer getLevel() {
+		return level;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
 	}
 }

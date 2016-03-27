@@ -13,7 +13,7 @@ import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
 	@Autowired
 	private UserBO userBO;
 
@@ -27,7 +27,23 @@ public class UserController {
 		if (userDB == null) {
 			return WebConstant.PROBLEMLIST;
 		} else {
-			return "profile";
+			return WebConstant.PROFILE;
 		}
+	}
+
+	@RequestMapping(value = "/{acount}/{password}/{nickname}", method = RequestMethod.PUT)
+	public String regedit( //
+			@PathVariable("acount") String account, //
+			@PathVariable("password") String password, //
+			@PathVariable("nickname") String nickname, //
+			Model model) {
+
+		UserDO userTemp = new UserDO();
+		userTemp.setAccount(account);
+		userTemp.setPassword(password);
+		userTemp.setNick_name(nickname);
+		userBO.createUser(userTemp);
+
+		return WebConstant.PROBLEMLIST;
 	}
 }

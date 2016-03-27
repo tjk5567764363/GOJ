@@ -4,7 +4,10 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#">Home</a>
 		</div>
@@ -20,9 +23,9 @@
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Problem Id">
+					<input id="search-problem-id" type="text" class="form-control" placeholder="Problem Id"/>
 				</div>
-				<a href="javascript:;" class="btn btn-default">Search</a>
+				<a href="#" class="btn btn-default" onclick="$(this).attr('href','/goj/'+ $('#search-problem-id').val())">Search</a>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="javascrip:;" data-toggle="modal" data-target="#modal-login">Login</a></li>
@@ -34,8 +37,9 @@
 						<li><a href="#">Exit</a></li>
 					</ul>
 				</li>
-				 -->
 				<li><a href="#">Logout</a></li>
+				 -->
+				 <li><a href="javascrip:;" data-toggle="modal" data-target="#modal-login">Regedit</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -44,37 +48,31 @@
 </nav>
 
 <div class="modal fade" id="modal-login">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Login  &  Regedit</h4>
+				<h4 class="modal-title">Login</h4>
 			</div>
 			<div class="modal-body">
 				<div class="container-fluid">
-					<form action="#" class="form-inline">
-						<div class="col-md-5">
-							<div class="form-group">
-								<label>Login</label>
-								<input type="text" class="form-control"/>
-								<input  type="text" class="form-control"/>
-							</div>
+					<form action="#">
+						<div class="form-group">
+							<label>Account</label>
+							<input type="text" class="form-control" placeholder="account"/>
 						</div>
-						<div class="col-md-5 col-md-offset-1 form-group">
-							<div class="form-group">
-								<label>Regedit</label>
-								<input  type="text" class="form-control"/>
-								<input  type="text" class="form-control"/>
-							</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" placeholder="password"/>
 						</div>
 					</form>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default">Login</button>
-				<button type="button" class="btn btn-primary">Regedit</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Login</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->
