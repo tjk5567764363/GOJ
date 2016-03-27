@@ -50,11 +50,26 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Login & Regedit</h4>
+				<h4 class="modal-title">Login  &  Regedit</h4>
 			</div>
 			<div class="modal-body">
-				<div class="col-md-4">
-					<input type="text" class="form-control"/>
+				<div class="container-fluid">
+					<form action="#" class="form-inline">
+						<div class="col-md-5">
+							<div class="form-group">
+								<label>Login</label>
+								<input type="text" class="form-control"/>
+								<input  type="text" class="form-control"/>
+							</div>
+						</div>
+						<div class="col-md-5 col-md-offset-1 form-group">
+							<div class="form-group">
+								<label>Regedit</label>
+								<input  type="text" class="form-control"/>
+								<input  type="text" class="form-control"/>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="modal-footer">
