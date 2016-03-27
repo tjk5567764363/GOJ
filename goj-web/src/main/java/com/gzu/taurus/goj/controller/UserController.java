@@ -18,7 +18,7 @@ public class UserController {
 	private UserBO userBO;
 
 	@RequestMapping(value = "/{account}", method = RequestMethod.GET)
-	public String toIndex(@PathVariable("account") String account, Model model) {
+	public String getUser(@PathVariable("account") String account, Model model) {
 
 		UserDO userDB = userBO.getUser(new UserDO(account));
 

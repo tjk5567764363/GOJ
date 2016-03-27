@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
+import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
 
 @Controller
@@ -17,14 +18,14 @@ public class ProblemController {
 	private ProblemBO problemBO;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String problem(@PathVariable("id") Long id, Model model) {
+	public String getProblem(@PathVariable("id") Long id, Model model) {
 
 		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(id));
 
 		model.addAttribute("problem", problemDB);
 
 		if (problemDB == null)
-			return "problemlist";
+			return WebConstant.PROBLEMLIST;
 		else
 			return "problem";
 	}
