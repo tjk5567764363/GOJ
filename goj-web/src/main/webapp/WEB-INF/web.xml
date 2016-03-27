@@ -18,8 +18,7 @@
 		<param-value>
             classpath:springbeans-datasource-config.xml,
             classpath:springbeans-dal-config.xml,
-            classpath:springbeans-bll-config.xml,
-            classpath:springbeans-web-config.xml,
+            classpath:springbeans-bll-config.xml
         </param-value>
 	</context-param>
 

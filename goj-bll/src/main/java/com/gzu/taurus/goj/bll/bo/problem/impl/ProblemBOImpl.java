@@ -22,7 +22,7 @@ public class ProblemBOImpl implements ProblemBO {
 	private ProblemDAO problemDAO;
 
 	public Long createProblem(ProblemDO problem) {
-		// TODO Auto-generated method stub
+		AssertUtil.notNull(problem);
 		return null;
 	}
 
@@ -33,13 +33,15 @@ public class ProblemBOImpl implements ProblemBO {
 	}
 
 	public List<ProblemDO> findProblems(ProblemDO problem) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(problem);
+
+		return problemDAO.findProblems(problem);
 	}
 
 	public int modifyProblem(ProblemDO problem) {
-		// TODO Auto-generated method stub
-		return 0;
+		AssertUtil.notNull(problem);
+
+		return problemDAO.modifyProblem(problem);
 	}
 
 }

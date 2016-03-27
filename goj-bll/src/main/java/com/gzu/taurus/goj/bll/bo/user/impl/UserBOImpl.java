@@ -22,7 +22,8 @@ public class UserBOImpl implements UserBO {
 	private UserDAO userDAO;
 
 	public Long createUser(UserDO user) {
-		// TODO Auto-generated method stub
+		AssertUtil.notNull(user);
+
 		return 0L;
 	}
 
@@ -33,12 +34,14 @@ public class UserBOImpl implements UserBO {
 	}
 
 	public List<UserDO> findUsers(UserDO user) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(user);
+
+		return userDAO.findUsers(user);
 	}
 
 	public int modifyUser(UserDO user) {
-		// TODO Auto-generated method stub
-		return 0;
+		AssertUtil.notNull(user);
+
+		return userDAO.modifyUser(user);
 	}
 }

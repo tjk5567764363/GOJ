@@ -21,6 +21,9 @@ public class SubmitDO extends BaseDO {
 	/** 问题ID */
 	private Long problem_id;
 
+	/** 源代码 */
+	private String source_code;
+
 	/** 判定结果 */
 	private String verdict;
 
@@ -102,5 +105,13 @@ public class SubmitDO extends BaseDO {
 
 	public void setLength(Long length) {
 		this.length = length;
+	}
+
+	public String getSource_code() {
+		return source_code;
+	}
+
+	public void setSource_code(String source_code) {
+		this.source_code = source_code;
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
+import com.gzu.taurus.goj.common.util.AssertUtil;
 import com.gzu.taurus.goj.dal.dao.problem.SubmitDAO;
 import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
 
@@ -31,8 +32,9 @@ public class SubmitBOImpl implements SubmitBO {
 	}
 
 	public List<SubmitDO> findSubmits(SubmitDO submit) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(submit);
+
+		return submitDAO.findSubmits(submit);
 	}
 
 	public int modifySubmit(SubmitDO submit) {
