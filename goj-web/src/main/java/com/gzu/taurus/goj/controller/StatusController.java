@@ -17,6 +17,10 @@ public class StatusController extends BaseController {
 	@Autowired
 	private SubmitBO submitBO;
 
+	public String createStatus(Model model) {
+		return WebConstant.STATUS;
+	}
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getStatus(@PathVariable("id") Long id, Model model) {
 

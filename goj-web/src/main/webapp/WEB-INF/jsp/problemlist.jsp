@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +31,14 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach items="${problemList}" var="problem">
 					<tr>
-						<td>1000</td>
-						<td style="text-align: left;"><a href="problem.html">A + B Problem</a></td>
-						<td>ACdream</td>
+						<td>${problem.id}</td>
+						<td style="text-align: left;"><a href="/goj/${problem.id}">${problem.title}</a></td>
+						<td>${problem.source}</td>
 						<td>57.97% (1229/2120)</td>
 					</tr>
+					</c:forEach>
 				</tbody>
 				<tfoot>
 					<tr>

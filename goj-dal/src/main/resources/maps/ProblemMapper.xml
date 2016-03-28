@@ -46,9 +46,10 @@
 		</where>
 	</select>
 
-	<select id="findProblems">
+	<select id="findProblems" parameterType="problem" resultType="problem">
 		<include refid="SelectProblem" />
 		<include refid="ProblemWhereCondition" />
+		LIMIT #{start_row}, #{page_size}
 	</select>
 
 	<update id="modifyProblem"></update>
@@ -74,6 +75,9 @@
 
 	<sql id="ProblemWhereCondition">
 		<where>
+			<if test="title != null">
+				AND title = #{title}
+			</if>
 		</where>
 	</sql>
 </mapper>  

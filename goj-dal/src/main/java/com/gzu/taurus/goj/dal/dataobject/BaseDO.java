@@ -20,9 +20,9 @@ public class BaseDO implements Serializable, Cloneable {
 	/** 每页默认显示的记录数大小: 60条 */
 	private static final int DEFAULT_PAGE_SIZE = 60;
 
-	private Integer start_row;
+	private int start_row;
 
-	private Integer page_size;
+	private int page_size;
 
 	private Date begin_date;
 
@@ -47,18 +47,18 @@ public class BaseDO implements Serializable, Cloneable {
 	/*************************** Getter Setter *********************************/
 	/***************************************************************************/
 
-	public Integer getStart_row() {
+	public int getStart_row() {
 		if (start_row < 0)
 			start_row = 0;
 
 		return start_row;
 	}
 
-	public void setStart_row(Integer start_row) {
+	public void setStart_row(int start_row) {
 		this.start_row = start_row;
 	}
 
-	public Integer getPage_size() {
+	public int getPage_size() {
 		if (page_size <= 0)
 			page_size = DEFAULT_PAGE_SIZE;
 		if (page_size > MAX_PAGE_SIZE)
@@ -67,7 +67,7 @@ public class BaseDO implements Serializable, Cloneable {
 		return page_size;
 	}
 
-	public void setPage_size(Integer page_size) {
+	public void setPage_size(int page_size) {
 		this.page_size = page_size;
 	}
 

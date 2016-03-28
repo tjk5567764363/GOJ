@@ -5,12 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
 
-@RequestMapping
+@RestController
+@RequestMapping("/")
 public class ProblemController extends BaseController {
 	@Autowired
 	private ProblemBO problemBO;
@@ -20,11 +22,17 @@ public class ProblemController extends BaseController {
 
 		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(id));
 
-		model.addAttribute("problem", problemDB);
-
-		if (problemDB == null)
-			return WebConstant.PROBLEMLIST;
-		else
+		if (problemDB == null) {
+			return findProblems(model);
+		} else {
+			model.addAttribute("problem", problemDB);
 			return WebConstant.PROBLEM;
+		}
+	}
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String findProblems(Model model) {
+		model.addAttribute("problemList", problemBO.findProblems(new ProblemDO()));
+		return WebConstant.PROBLEMLIST;
 	}
 }

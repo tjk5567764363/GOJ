@@ -16,9 +16,9 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/goj/">Problem</a></li>
-				<li><a href="static/status.html">Status</a></li>
-				<li><a href="static/ranklist.html">Ranklist</a></li>
-				<li><a href="static/contest.html">Contest</a></li>
+				<li><a href="/goj/status/">Status</a></li>
+				<li><a href="/goj/ranklist/">Ranklist</a></li>
+				<li><a href="/goj/contest/">Contest</a></li>
 				<li class="dropdown"></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
@@ -39,7 +39,7 @@
 				</li>
 				<li><a href="#">Logout</a></li>
 				 -->
-				 <li><a href="javascrip:;" data-toggle="modal" data-target="#modal-login">Regedit</a></li>
+				 <li><a href="javascrip:;" data-toggle="modal" data-target="#modal-regedit">Regedit</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -75,8 +75,40 @@
 				<button type="button" class="btn btn-primary">Login</button>
 			</div>
 		</div>
-		<!-- /.modal-content -->
 	</div>
-	<!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+
+<div class="modal fade" id="modal-regedit">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Regedit</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<form action="#">
+						<div class="form-group">
+							<label>Account</label>
+							<input type="text" class="form-control" placeholder="account"/>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" placeholder="password"/>
+						</div>
+						<div class="form-group">
+							<label>Nickname</label>
+							<input type="text" class="form-control" placeholder="nickname"/>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Regedit</button>
+			</div>
+		</div>
+	</div>
+</div>
