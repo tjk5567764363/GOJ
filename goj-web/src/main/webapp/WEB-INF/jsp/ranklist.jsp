@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,15 +35,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>rrtyui</td>
-						<td>Sithope</td>
-						<td>风华绝代</td>
-						<td>128</td>
-						<td>457</td>
-						<td>28.01%</td>
-					</tr>
+					<c:forEach items="${userList}" var="user">
+						<tr>
+							<td>${user.id}</td>
+							<td>${user.account}</td>
+							<td>${user.nick_name}</td>
+							<td>${user.signature}</td>
+							<td>${user.solve}</td>
+							<td>${user.submit}</td>
+							<td>${user.solve}/${user.submit}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 				<tfoot>
 					<tr>

@@ -42,6 +42,12 @@ public class UserDO extends BaseDO {
 	/** 等级 */
 	private Integer level;
 
+	/** AC次数 */
+	private Integer solved;
+
+	/** 提交次数 */
+	private Integer submit;
+
 	public UserDO() {
 	}
 
@@ -131,5 +137,21 @@ public class UserDO extends BaseDO {
 
 	public void setLevel(Integer level) {
 		this.level = level;
+	}
+
+	public Integer getSolved() {
+		return solved;
+	}
+
+	public void setSolved(Integer solved) {
+		this.solved = solved;
+	}
+
+	public Integer getSubmit() {
+		return submit;
+	}
+
+	public void setSubmit(Integer submit) {
+		this.submit = submit;
 	}
 }
