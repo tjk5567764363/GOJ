@@ -33,7 +33,7 @@ public class ContestDO extends BaseDO {
 	private Long duration;
 
 	/** 类型 */
-	private Integer Type;
+	private Integer type;
 
 	/** 管理员 */
 	private String manager;
@@ -94,11 +94,11 @@ public class ContestDO extends BaseDO {
 	}
 
 	public Integer getType() {
-		return Type;
+		return type;
 	}
 
 	public void setType(Integer type) {
-		Type = type;
+		type = type;
 	}
 
 	public String getManager() {

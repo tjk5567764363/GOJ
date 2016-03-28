@@ -17,15 +17,15 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/goj/">Problem</a></li>
 				<li><a href="/goj/status/">Status</a></li>
-				<li><a href="/goj/ranklist/">Ranklist</a></li>
+				<li><a href="/goj/ranklist/">RankList</a></li>
 				<li><a href="/goj/contest/">Contest</a></li>
 				<li class="dropdown"></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-					<input id="search-problem-id" type="text" class="form-control" placeholder="Problem Id"/>
+					<input id="search-problem-id" type="text" class="form-control" placeholder="Problem Id" onkeypress="if(event.keyCode==13) {$('#search-problem-id-btn').attr('href','/goj/'+ $(this).val()); $('#search-problem-id-btn').click();}"/>
 				</div>
-				<a href="#" class="btn btn-default" onclick="$(this).attr('href','/goj/'+ $('#search-problem-id').val())">Search</a>
+				<a href="#" id="search-problem-id-btn" class="btn btn-default" onclick="$(this).attr('href','/goj/'+ $('#search-problem-id').val())">Search</a>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="javascrip:;" data-toggle="modal" data-target="#modal-login">Login</a></li>

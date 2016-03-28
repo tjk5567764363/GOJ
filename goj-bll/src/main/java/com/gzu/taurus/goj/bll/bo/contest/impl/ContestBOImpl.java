@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.taurus.goj.bll.bo.contest.interfaces.ContestBO;
+import com.gzu.taurus.goj.common.util.AssertUtil;
 import com.gzu.taurus.goj.dal.dao.contest.ContestDAO;
 import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
 
@@ -21,23 +22,27 @@ public class ContestBOImpl implements ContestBO {
 	private ContestDAO contestDAO;
 
 	public Long createContest(ContestDO contest) {
-		// TODO Auto-generated method stub
+		AssertUtil.notNull(contest);
+
 		return null;
 	}
 
 	public ContestDO getContest(ContestDO contest) {
+		AssertUtil.notNull(contest);
 
-		return null;
+		return contestDAO.getContest(contest);
 	}
 
 	public List<ContestDO> findContests(ContestDO contest) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(contest);
+
+		return contestDAO.findContests(contest);
 	}
 
 	public int modifyContest(ContestDO contest) {
-		// TODO Auto-generated method stub
-		return 0;
+		AssertUtil.notNull(contest);
+
+		return contestDAO.modifyContest(contest);
 	}
 
 }

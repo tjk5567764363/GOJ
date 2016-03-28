@@ -30,7 +30,7 @@ public class BaseDO implements Serializable, Cloneable {
 
 	private List<Integer> statusList;
 
-	private int status;
+	private Integer status;
 
 	/** 创建时间 */
 	private Date create_time;
@@ -95,11 +95,11 @@ public class BaseDO implements Serializable, Cloneable {
 		this.end_date = end_date;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

@@ -18,5 +18,7 @@ public class WebConstant {
 
 	public static final String CONTEST = "contest";
 
+	public static final String ADDCONTEST = "addcontest";
+
 	public static final String RANKLIST = "ranklist";
 }

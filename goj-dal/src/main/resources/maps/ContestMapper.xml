@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gzu.taurus.goj.dal.dao.contest.ContestDAO">
-	<insert id="createUser" parameterType="user">
-		INSERT INTO USER
+	
+	<resultMap type="contest" id="contestResultMap"/>
+
+	<insert id="createContest" parameterType="contest">
+		INSERT INTO contest
 		(
 		id,
-		account,
+		title,
+		description,
+		announcement,
 		password,
-		nick_name,
-		signature,
-		age,
-		email,
-		tel,
-		school,
+		duration,
+		type,
+		manager,
+		start_time,
 		status,
 		create_time,
 		update_time
@@ -20,71 +23,54 @@
 		VALUES
 		(
 		#{id},
-		#{account},
+		#{title},
+		#{description},
+		#{announcement},
 		#{password},
-		#{nick_name},
-		#{signature},
-		#{age},
-		#{email},
-		#{tel},
-		#{school},
+		#{duration},
+		#{type},
+		#{manager},
+		#{start_time},
 		#{status},
 		NOW(),
 		NOW()
 		)
 	</insert>
 
-	<select id="getUser">
-		<include refid="SelectUser" />
+	<select id="getContest" parameterType="contest" resultType="contest">
+		<include refid="SelectContest" />
 		<where>
 			id = #{id}
 		</where>
 	</select>
 
-	<select id="findUsers">
-		<include refid="SelectUser" />
-		<include refid="UserWhereCondition" />
+	<select id="findContests" parameterType="contest" resultType="contest">
+		<include refid="SelectContest" />
+		<include refid="ContestWhereCondition" />
+		LIMIT #{start_row}, #{page_size}
 	</select>
 
-	<update id="modifyUser"></update>
+	<update id="modifyContest" parameterType="contest"></update>
 
-	<sql id="SelectUser">
+	<sql id="SelectContest">
 		SELECT
 		id,
-		account,
+		title,
+		description,
+		announcement,
 		password,
-		nick_name,
-		signature,
-		age,
-		email,
-		tel,
-		school,
+		duration,
+		type,
+		manager,
+		start_time,
 		status,
 		create_time,
 		update_time
-		FROM USER
+		FROM contest
 	</sql>
 
-	<sql id="UserWhereCondition">
+	<sql id="ContestWhereCondition">
 		<where>
-			<if test="account != null">
-				AND account = #{account}
-			</if>
-			<if test="nick_name != null">
-				AND nick_name = #{nick_name}
-			</if>
-			<if test="age != null">
-				AND age = #{age}
-			</if>
-			<if test="email != null">
-				AND email = #{email}
-			</if>
-			<if test="tel != null">
-				AND tel = #{tel}
-			</if>
-			<if test="school != null">
-				AND school = #{school}
-			</if>
 			<if test="status != null">
 				AND status = #{status}
 			</if>

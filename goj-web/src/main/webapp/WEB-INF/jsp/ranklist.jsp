@@ -7,13 +7,14 @@
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
 	<link rel="stylesheet" href="/goj/static/css/style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="/goj/static/image/icon.jpg" />
 	
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 	
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<title></title>
+	<title>GOJ:RankList</title>
 </head>
 <body>
 	<jsp:include page="head.jsp" />
