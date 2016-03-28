@@ -12,6 +12,12 @@ import com.gzu.taurus.goj.bll.bo.user.interfaces.UserBO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
 
+/**
+ * RankListController
+ *
+ * @Author tangjunkai
+ * @CreateDate 2016年3月29日
+ */
 @RestController
 @RequestMapping("/ranklist")
 public class RankListController extends BaseController {

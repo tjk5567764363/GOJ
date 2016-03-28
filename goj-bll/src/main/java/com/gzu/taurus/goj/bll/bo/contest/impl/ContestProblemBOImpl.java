@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gzu.taurus.goj.bll.bo.contest.interfaces.ContestProblemBO;
-import com.gzu.taurus.goj.dal.dao.contest.ContestDAO;
-import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
+import com.gzu.taurus.goj.common.util.AssertUtil;
+import com.gzu.taurus.goj.dal.dao.contest.ContestProblemDAO;
+import com.gzu.taurus.goj.dal.dataobject.contest.ContestProblemDO;
 
 /**
  * ContestProblemBOImpl
@@ -18,25 +19,29 @@ import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
 @Service
 public class ContestProblemBOImpl implements ContestProblemBO {
 	@Autowired
-	private ContestDAO contestDAO;
+	private ContestProblemDAO contestProblemDAO;
 
-	public Long createContestProblem(ContestDO contest) {
-		// TODO Auto-generated method stub
+	public Long createContestProblem(ContestProblemDO contestProblem) {
+		AssertUtil.notNull(contestProblem);
+
 		return null;
 	}
 
-	public ContestDO getContestProblem(ContestDO contest) {
-		// TODO Auto-generated method stub
-		return null;
+	public ContestProblemDO getContestProblem(ContestProblemDO contestProblem) {
+		AssertUtil.notNull(contestProblem);
+
+		return contestProblemDAO.getContestProblem(contestProblem);
 	}
 
-	public List<ContestDO> findContestProblems(ContestDO contest) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ContestProblemDO> findContestProblems(ContestProblemDO contestProblem) {
+		AssertUtil.notNull(contestProblem);
+
+		return contestProblemDAO.findContestProblems(contestProblem);
 	}
 
-	public int modifyContestProblem(ContestDO contest) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int modifyContestProblem(ContestProblemDO contestProblem) {
+		AssertUtil.notNull(contestProblem);
+
+		return contestProblemDAO.modifyContestProblem(contestProblem);
 	}
 }

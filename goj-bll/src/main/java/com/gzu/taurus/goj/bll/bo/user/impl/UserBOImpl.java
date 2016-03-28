@@ -25,6 +25,8 @@ public class UserBOImpl implements UserBO {
 	public Long createUser(UserDO user) {
 		AssertUtil.notNull(user);
 
+		user.setSolved(0);
+		user.setSubmit(0);
 		user.setStatus(Status.NOMARL.getValue());
 
 		userDAO.createUser(user);

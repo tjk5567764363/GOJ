@@ -10,4 +10,19 @@ public class BOException extends Exception {
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 
+	public BOException() {
+		super();
+	}
+
+	public BOException(String message) {
+		super(message);
+	}
+
+	public BOException(Throwable cause) {
+		super(cause);
+	}
+
+	public BOException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }

@@ -41,9 +41,14 @@
 							<td>${user.account}</td>
 							<td>${user.nick_name}</td>
 							<td>${user.signature}</td>
-							<td>${user.solve}</td>
+							<td>${user.solved}</td>
 							<td>${user.submit}</td>
-							<td>${user.solve}/${user.submit}</td>
+							<c:if test="${user.submit == 0}">
+								<td>0.00%</td>
+							</c:if>
+							<c:if test="${user.submit > 0}">
+								<td>${user.solved * 1.0 / user.submit}</td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>

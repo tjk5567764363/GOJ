@@ -2,7 +2,7 @@ package com.gzu.taurus.goj.bll.bo.contest.interfaces;
 
 import java.util.List;
 
-import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
+import com.gzu.taurus.goj.dal.dataobject.contest.ContestProblemDO;
 
 /**
  * ContestProblemBO
@@ -19,7 +19,7 @@ public interface ContestProblemBO {
 	 * @param contest
 	 * @return
 	 */
-	Long createContestProblem(ContestDO contest);
+	Long createContestProblem(ContestProblemDO contestProblem);
 
 	/**
 	 * getContestProblem
@@ -29,7 +29,7 @@ public interface ContestProblemBO {
 	 * @param contest
 	 * @return
 	 */
-	ContestDO getContestProblem(ContestDO contest);
+	ContestProblemDO getContestProblem(ContestProblemDO contestProblem);
 
 	/**
 	 * findContestProblems
@@ -39,7 +39,7 @@ public interface ContestProblemBO {
 	 * @param contest
 	 * @return
 	 */
-	List<ContestDO> findContestProblems(ContestDO contest);
+	List<ContestProblemDO> findContestProblems(ContestProblemDO contestProblem);
 
 	/**
 	 * modifyContestProblem
@@ -49,5 +49,5 @@ public interface ContestProblemBO {
 	 * @param contest
 	 * @return
 	 */
-	int modifyContestProblem(ContestDO contest);
+	int modifyContestProblem(ContestProblemDO contestProblem);
 }

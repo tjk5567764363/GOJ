@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.gzu.taurus.goj.dal.dataobject.contest.ContestDO;
+import com.gzu.taurus.goj.dal.dataobject.contest.ContestProblemDO;
 
 /**
  * ContestProblemDAO
@@ -22,7 +22,7 @@ public interface ContestProblemDAO {
 	 * @param contest
 	 * @return
 	 */
-	int createContestProblem(ContestDO contest);
+	Long createContestProblem(ContestProblemDO contestProblem);
 
 	/**
 	 * getContestProblem
@@ -32,7 +32,7 @@ public interface ContestProblemDAO {
 	 * @param contest
 	 * @return
 	 */
-	ContestDO getContestProblem(ContestDO contest);
+	ContestProblemDO getContestProblem(ContestProblemDO contestProblem);
 
 	/**
 	 * findContestProblems
@@ -42,7 +42,7 @@ public interface ContestProblemDAO {
 	 * @param contest
 	 * @return
 	 */
-	List<ContestDO> findContestProblems(ContestDO contest);
+	List<ContestProblemDO> findContestProblems(ContestProblemDO contestProblem);
 
 	/**
 	 * modifyContestProblem
@@ -52,5 +52,5 @@ public interface ContestProblemDAO {
 	 * @param contest
 	 * @return
 	 */
-	int modifyContestProblem(ContestDO contest);
+	int modifyContestProblem(ContestProblemDO contestProblem);
 }

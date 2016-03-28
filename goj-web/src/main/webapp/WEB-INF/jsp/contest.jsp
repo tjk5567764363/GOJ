@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,12 +38,16 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>1000</td>
-						<td style="text-align: left;">大一寒假集训</td>
-						<td>2016-01-19 08:00:00</td>
-						<td>04:00:00</td>
-						<td>Private</td>
-						<td>jiang886</td>
+						<c:forEach items="${contestList}" var="contest">
+							<td>${contest.id}</td>
+							<td style="text-align: left;">
+								<a href="/goj/contest/${contest.id}">${contest.title}</a>
+							</td>
+							<td>${contest.start_time}</td>
+							<td>${contest.length}</td>
+							<td>${contest.type}</td>
+							<td>${contest.manager}</td>
+						</c:forEach>
 					</tr>
 				</tbody>
 				<tfoot>

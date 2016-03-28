@@ -32,7 +32,7 @@ public class ContestDO extends BaseDO {
 	/** 时长 */
 	private Long duration;
 
-	/** 类型 */
+	/** 类型 {@link com.gzu.taurus.goj.common.enums.Contest.Type} */
 	private Integer type;
 
 	/** 管理员 */
@@ -40,6 +40,13 @@ public class ContestDO extends BaseDO {
 
 	/** 开始时间 */
 	private Date start_time;
+
+	public ContestDO() {
+	}
+
+	public ContestDO(Long id) {
+		this.id = id;
+	}
 
 	/***************************************************************************/
 	/*************************** Getter Setter *********************************/
