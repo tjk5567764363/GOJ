@@ -33,6 +33,14 @@ public class ContestController extends BaseController {
 	@Autowired
 	private ContestProblemBO contestProblemBO;
 
+	/**
+	 * 获取比赛列表
+	 *
+	 * @Author tangjunkai
+	 * @CreateDate 2016年3月29日
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String findContests(Model model) {
 
@@ -43,6 +51,17 @@ public class ContestController extends BaseController {
 		return WebConstant.CONTEST;
 	}
 
+	/**
+	 * 进入单个比赛
+	 *
+	 * @Author tangjunkai
+	 * @CreateDate 2016年3月29日
+	 * @param id
+	 * @param pwd
+	 * @param model
+	 * @return
+	 * @throws BOException
+	 */
 	@RequestMapping(value = "/{id}/{pwd}", method = RequestMethod.GET)
 	public String getContest(@PathVariable("id") Long id, @PathVariable("pwd") String pwd, Model model) throws BOException {
 		Assert.notNull(id, "Id不能为空.");
@@ -54,12 +73,21 @@ public class ContestController extends BaseController {
 				throw new BOException("密码不正确.");
 			}
 		}
-
-		contestProblemBO.findContestProblems(new ContestProblemDO());
+		ContestProblemDO contestProblemQuery = new ContestProblemDO();
+		contestProblemQuery.setContest_id(contestDB.getId());
+		List<ContestProblemDO> list = contestProblemBO.findContestProblems(contestProblemQuery);
 
 		return WebConstant.CONTEST;
 	}
 
+	/**
+	 * 添加一个比赛
+	 *
+	 * @Author tangjunkai
+	 * @CreateDate 2016年3月29日
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/addcontest", method = RequestMethod.GET)
 	public String addContest(Model model) {
 		return WebConstant.ADDCONTEST;
