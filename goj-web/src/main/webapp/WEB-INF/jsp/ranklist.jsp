@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +48,7 @@
 								<td>0.00%</td>
 							</c:if>
 							<c:if test="${user.submit > 0}">
-								<td>${user.solved * 1.0 / user.submit}</td>
+								<td><fmt:formatNumber type="number" value="${user.solved * 1.0 / user.submit}" pattern="0.00" maxFractionDigits="2"/>%</td>
 							</c:if>
 						</tr>
 					</c:forEach>

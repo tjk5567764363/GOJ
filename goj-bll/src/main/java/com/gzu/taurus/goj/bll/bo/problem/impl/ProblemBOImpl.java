@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.common.util.AssertUtil;
@@ -17,6 +18,7 @@ import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
  * @CreateDate 2016年3月22日
  */
 @Service
+@Transactional
 public class ProblemBOImpl implements ProblemBO {
 	@Autowired
 	private ProblemDAO problemDAO;
@@ -26,12 +28,14 @@ public class ProblemBOImpl implements ProblemBO {
 		return null;
 	}
 
+	@Transactional(readOnly = true)
 	public ProblemDO getProblem(ProblemDO problem) {
 		AssertUtil.notNull(problem);
 
 		return problemDAO.getProblem(problem);
 	}
 
+	@Transactional(readOnly = true)
 	public List<ProblemDO> findProblems(ProblemDO problem) {
 		AssertUtil.notNull(problem);
 

@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
+import com.gzu.taurus.goj.common.enums.Status;
+import com.gzu.taurus.goj.common.enums.Submit.Verdict;
 import com.gzu.taurus.goj.common.util.AssertUtil;
 import com.gzu.taurus.goj.dal.dao.problem.SubmitDAO;
 import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
@@ -17,20 +20,29 @@ import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
  * @CreateDate 2016年3月22日
  */
 @Service
+@Transactional
 public class SubmitBOImpl implements SubmitBO {
 	@Autowired
 	private SubmitDAO submitDAO;
 
 	public int createSubmit(SubmitDO submit) {
-		// TODO Auto-generated method stub
+		AssertUtil.notNull(submit);
+
+		submit.setVerdict(Verdict.Queuing.getValue());
+		submit.setStatus(Status.NOMARL.getValue());
+		submitDAO.createSubmit(submit);
+
 		return 0;
 	}
 
+	@Transactional(readOnly = true)
 	public SubmitDO getSubmit(SubmitDO submit) {
-		// TODO Auto-generated method stub
-		return null;
+		AssertUtil.notNull(submit);
+
+		return submitDAO.getSubmit(submit);
 	}
 
+	@Transactional(readOnly = true)
 	public List<SubmitDO> findSubmits(SubmitDO submit) {
 		AssertUtil.notNull(submit);
 
@@ -38,8 +50,9 @@ public class SubmitBOImpl implements SubmitBO {
 	}
 
 	public int modifySubmit(SubmitDO submit) {
-		// TODO Auto-generated method stub
-		return 0;
+		AssertUtil.notNull(submit);
+
+		return submitDAO.modifySubmit(submit);
 	}
 
 }

@@ -99,7 +99,6 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 
-
 		<!-- Log4j -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

@@ -56,23 +56,27 @@
 		</div>
 		<div class="col-md-4">
 			<div class="block block-info block-container">
-				<div class="form-group forms-group-sm">
-					<label for="pid" class="control-label">Problem</label> <input id="pid" type="type" value="${problem.id}" class="form-control" readonly="true">
-				</div>
-				<div class="form-group forms-group-sm">
-					<label for="pid" class="control-label">Language</label> <select class="form-control input-sm">
-						<option value="1">C</option>
-						<option value="2" selected="true">C++</option>
-						<option value="3">Java</option>
-					</select>
-				</div>
-				<div class="form-group forms-group-sm">
-					<label for="pid" class="control-label">Source Code</label>
-					<textarea id="code" rows="15" class="form-control"></textarea>
-				</div>
-				<div class="form-group">
-					<a href="#" class="btn btn-default">Submit</a>
-				</div>
+				<form action="/goj/status/${problem.id}" method="post" id="f1">
+					<div class="form-group forms-group-sm">
+						<label for="pid" class="control-label">Problem</label>
+						<input id="pid" type="text" value="${problem.id}" class="form-control" readonly="readonly">
+					</div>
+					<div class="form-group forms-group-sm">
+						<label for="pid" class="control-label">Language</label> 
+						<select class="form-control input-sm" name="lang">
+							<option value="1">C</option>
+							<option value="2" selected="selected">C++</option>
+							<option value="3">Java</option>
+						</select>
+					</div>
+					<div class="form-group forms-group-sm">
+						<label for="pid" class="control-label">Source Code</label>
+						<textarea id="code" rows="15" class="form-control" name="source"></textarea>
+					</div>
+					<div class="form-group">
+						<a href="javascript:;" class="btn btn-default" onclick="$('#f1').submit()">Submit</a>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

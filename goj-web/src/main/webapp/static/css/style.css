@@ -31,6 +31,16 @@ tfoot td {
     font-weight: bold;
 }
 
+.queuing {
+    color: orange;
+    font-weight: bold;
+}
+
+.error {
+    color: black;
+    font-weight: bold;
+}
+
 .heading {
     height:  40px;
     border: 1px solid #ddd;

@@ -24,8 +24,8 @@ public class SubmitDO extends BaseDO {
 	/** 源代码 */
 	private String source_code;
 
-	/** 判定结果 */
-	private String verdict;
+	/** 判定结果 {@link com.gzu.taurus.goj.common.enums.Submit.Verdict} */
+	private Integer verdict;
 
 	/** 用时 */
 	private Long time;
@@ -33,11 +33,11 @@ public class SubmitDO extends BaseDO {
 	/** 使用空间大小 */
 	private Long memory;
 
-	/** 提交语言 */
-	private String language;
+	/** 提交语言 {@link com.gzu.taurus.goj.common.enums.Submit.Language} */
+	private Integer language;
 
 	/** 代码长度 */
-	private Long length;
+	private Integer length;
 
 	/***************************************************************************/
 	/*************************** Getter Setter *********************************/
@@ -67,11 +67,11 @@ public class SubmitDO extends BaseDO {
 		this.problem_id = problem_id;
 	}
 
-	public String getVerdict() {
+	public Integer getVerdict() {
 		return verdict;
 	}
 
-	public void setVerdict(String verdict) {
+	public void setVerdict(Integer verdict) {
 		this.verdict = verdict;
 	}
 
@@ -91,19 +91,19 @@ public class SubmitDO extends BaseDO {
 		this.memory = memory;
 	}
 
-	public String getLanguage() {
+	public Integer getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(Integer language) {
 		this.language = language;
 	}
 
-	public Long getLength() {
+	public Integer getLength() {
 		return length;
 	}
 
-	public void setLength(Long length) {
+	public void setLength(Integer length) {
 		this.length = length;
 	}
 

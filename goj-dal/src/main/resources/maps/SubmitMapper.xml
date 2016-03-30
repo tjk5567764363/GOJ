@@ -45,6 +45,8 @@
 	<select id="findSubmits" parameterType="submit" resultType="submit">
 		<include refid="SelectSubmit" />
 		<include refid="SubmitWhereCondition" />
+		ORDER BY create_time DESC
+		LIMIT #{start_row}, #{page_size}
 	</select>
 
 	<update id="modifySubmit" parameterType="submit"></update>
