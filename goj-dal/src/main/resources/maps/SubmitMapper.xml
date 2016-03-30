@@ -44,6 +44,11 @@
 			id = #{id}
 		</where>
 	</select>
+	
+	<select id="getSubmitCount" parameterType="submit" resultType="int">
+		SELECT COUNT(*) FROM submit
+		<include refid="SubmitWhereCondition" />
+	</select>
 
 	<select id="findSubmits" parameterType="submit" resultType="submit">
 		<include refid="SelectSubmit" />
@@ -62,7 +67,7 @@
 		<where>
 			id = #{id}
 			<if test="verdict != null">
-				verdict != #{verdict}
+				AND verdict != #{verdict}
 			</if>
 		</where>
 	</update>
@@ -86,6 +91,12 @@
 
 	<sql id="SubmitWhereCondition">
 		<where>
+			<if test="problem_id != null">
+				AND problem_id = #{problem_id}
+			</if>
+			<if test="verdict != null">
+				AND verdict = #{verdict}
+			</if>
 			<if test="status != null">
 				AND status = #{status}
 			</if>

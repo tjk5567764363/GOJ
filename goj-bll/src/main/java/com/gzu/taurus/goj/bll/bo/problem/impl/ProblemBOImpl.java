@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.common.util.AssertUtil;
@@ -31,6 +32,7 @@ public class ProblemBOImpl implements ProblemBO {
 	@Transactional(readOnly = true)
 	public ProblemDO getProblem(ProblemDO problem) {
 		AssertUtil.notNull(problem);
+		Assert.notNull(problem.getId(), "Id不能为空.");
 
 		return problemDAO.getProblem(problem);
 	}

@@ -33,6 +33,12 @@ public class ProblemDO extends BaseDO {
 	/** 输出样例 */
 	private String sample_output;
 
+	/** 测试数据输入 */
+	private String test_input;
+
+	/** 测试数据输出 */
+	private String test_output;
+
 	/** 来源 */
 	private String source;
 
@@ -142,5 +148,21 @@ public class ProblemDO extends BaseDO {
 
 	public void setMemory_limit(Long memory_limit) {
 		this.memory_limit = memory_limit;
+	}
+
+	public String getTest_input() {
+		return test_input;
+	}
+
+	public void setTest_input(String test_input) {
+		this.test_input = test_input;
+	}
+
+	public String getTest_output() {
+		return test_output;
+	}
+
+	public void setTest_output(String test_output) {
+		this.test_output = test_output;
 	}
 }

@@ -177,11 +177,18 @@
 				<version>2.7.3</version>
 			</dependency>
 
-			<!-- guava -->
+			<!-- Guava -->
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
 				<version>19.0</version>
+			</dependency>
+
+			<!-- Dozer -->
+			<dependency>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>5.5.1</version>
 			</dependency>
 			<!-- 工具包依赖 end -->
 

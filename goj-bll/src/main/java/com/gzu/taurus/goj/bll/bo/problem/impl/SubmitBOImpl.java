@@ -30,8 +30,9 @@ public class SubmitBOImpl implements SubmitBO {
 
 		submit.setVerdict(Verdict.Queuing.getValue());
 		submit.setStatus(Status.NOMARL.getValue());
+		submitDAO.createSubmit(submit);
 
-		return submitDAO.createSubmit(submit);
+		return submit.getId();
 	}
 
 	@Transactional(readOnly = true)
@@ -39,6 +40,13 @@ public class SubmitBOImpl implements SubmitBO {
 		AssertUtil.notNull(submit);
 
 		return submitDAO.getSubmit(submit);
+	}
+
+	@Transactional(readOnly = true)
+	public int getSubmitCount(SubmitDO submit) {
+		AssertUtil.notNull(submit);
+
+		return submitDAO.getSubmitCount(submit);
 	}
 
 	@Transactional(readOnly = true)

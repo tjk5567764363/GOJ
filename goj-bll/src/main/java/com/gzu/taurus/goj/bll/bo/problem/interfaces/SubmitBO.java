@@ -33,6 +33,16 @@ public interface SubmitBO {
 	SubmitDO getSubmit(SubmitDO submit);
 
 	/**
+	 * getSubmitCount
+	 *
+	 * @Author tangjunkai
+	 * @CreateDate 2016年3月31日
+	 * @param submit
+	 * @return
+	 */
+	int getSubmitCount(SubmitDO submit);
+
+	/**
 	 * findSubmits
 	 *
 	 * @Author tangjunkai

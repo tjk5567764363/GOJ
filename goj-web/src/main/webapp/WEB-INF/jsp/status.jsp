@@ -53,6 +53,9 @@
 								<c:when test="${status.verdict == 2}">
 									<td class="queuing">Queuing</td>
 								</c:when>
+								<c:when test="${status.verdict == 3}">
+									<td class="wrong">Compile_Error</td>
+								</c:when>
 								<c:otherwise>
 									<td class="error">Error</td>
 								</c:otherwise>
@@ -88,7 +91,7 @@
 								</c:otherwise>
 							</c:choose>
 							<td>${status.length}B</td>
-							<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long"/></td>
+							<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd HH:mm:ss" type="date" dateStyle="long"/></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -59,10 +59,10 @@
 		UPDATE user
 		<set>
 			<if test="submit != null">
-				submit = submit + #{submit}
+				submit = submit + #{submit},
 			</if>
 			<if test="solved != null">
-				solved = solved + #{solved}
+				solved = solved + #{solved},
 			</if>
 		</set>
 		<where>

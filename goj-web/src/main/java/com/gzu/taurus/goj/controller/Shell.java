@@ -11,14 +11,19 @@ import java.io.OutputStreamWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
 import com.gzu.taurus.goj.common.enums.Submit.Verdict;
+import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
 import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
 
 @Service
 public class Shell {
 	@Autowired
 	private SubmitBO submitBO;
+
+	@Autowired
+	private ProblemBO problemBO;
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		String command = "/bin/sh /Users/tangjunkai/Desktop/a.sh";
@@ -37,40 +42,54 @@ public class Shell {
 		}
 	}
 
-	public void judge(Long id) {
+	public boolean judge(Long id) {
 		String filePath = "/Users/tangjunkai/Desktop/SourceCode/" + id + ".cpp";
 		String fileOutPath = "/Users/tangjunkai/Desktop/SourceCode/" + id + ".out";
 
 		SubmitDO submitDB = submitBO.getSubmit(new SubmitDO(id));
+		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(submitDB.getProblem_id()));
 
 		String code = submitDB.getSource_code();
 
 		File f = new File(filePath);
 		try {
 			f.createNewFile();
-			BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-			bw.write(code);
-			bw.close();
+			BufferedWriter w = new BufferedWriter(new FileWriter(f));
+			w.write(code);
+			w.close();
 
-			int cmdcode = Runtime.getRuntime().exec("g++ " + filePath).waitFor();
+			int cmdcode = Runtime.getRuntime().exec("g++ " + filePath + " -o " + fileOutPath).waitFor();
 
 			if (cmdcode != 0) {
 				submitBO.modifySubmitVerdict(id, Verdict.Compile_Error);
-				return;
+				return false;
 			}
 
-			cmdcode = Runtime.getRuntime().exec("g++ " + filePath + " -o " + fileOutPath).waitFor();
+			Process p = Runtime.getRuntime().exec(fileOutPath);
 
-			if (cmdcode != 0) {
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+			bw.write(problemDB.getTest_input());
+			bw.close();
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line = null;
+			String output = "";
+			while ((line = br.readLine()) != null) {
+				output += line + "\n";
+			}
+
+			if (!problemDB.getTest_output().equals(output)) {
 				submitBO.modifySubmitVerdict(id, Verdict.Wrong_Answer);
+				return false;
 			} else {
 				submitBO.modifySubmitVerdict(id, Verdict.Accepted);
+				return true;
 			}
-			return;
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		return false;
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +34,19 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${problemList}" var="problem">
-					<tr>
-						<td>${problem.id}</td>
-						<td style="text-align: left;"><a href="/goj/${problem.id}">${problem.title}</a></td>
-						<td>${problem.source}</td>
-						<td>57.97% (1229/2120)</td>
-					</tr>
+						<tr>
+							<td>${problem.id}</td>
+							<td style="text-align: left;"><a href="/goj/${problem.id}">${problem.title}</a></td>
+							<td>${problem.source}</td>
+							<c:choose>
+								<c:when test="${problem.submit == 0}">
+									<td>0.00% (${problem.solved}/${problem.submit})</td>
+								</c:when>
+								<c:otherwise>
+									<td><fmt:formatNumber type="number" value="${problem.solved * 100.0 / problem.submit}" pattern="0.00" maxFractionDigits="2"/>% (${problem.solved}/${problem.submit})</td>
+								</c:otherwise>
+							</c:choose>
+						</tr>
 					</c:forEach>
 				</tbody>
 				<tfoot>

@@ -44,15 +44,17 @@ public class StatusController extends BaseController {
 		Long submitId = submitBO.createSubmit(submitTemp);
 
 		/************* Judge 之后考虑放在task *************/
-		s.judge(submitId);
+		boolean result = s.judge(submitId);
 		/************************************************/
 
 		UserDO userTemp = new UserDO();
 		userTemp.setId(getLoginUserId());
+		if (result)
+			userTemp.setSolved(1);
 		userTemp.setSubmit(1);
 		userBO.modifyUser(userTemp);
 
-		return "redirect:/goj/status/";
+		return "redirect:/status/";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

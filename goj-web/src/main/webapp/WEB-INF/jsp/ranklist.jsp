@@ -39,7 +39,7 @@
 					<c:forEach items="${userList}" var="user">
 						<tr>
 							<td>${user.id}</td>
-							<td>${user.account}</td>
+							<td><a href="/goj/user/${user.account}">${user.account}</a></td>
 							<td>${user.nick_name}</td>
 							<td>${user.signature}</td>
 							<td>${user.solved}</td>
@@ -48,7 +48,7 @@
 								<td>0.00%</td>
 							</c:if>
 							<c:if test="${user.submit > 0}">
-								<td><fmt:formatNumber type="number" value="${user.solved * 1.0 / user.submit}" pattern="0.00" maxFractionDigits="2"/>%</td>
+								<td><fmt:formatNumber type="number" value="${user.solved * 100.0 / user.submit}" pattern="0.00" maxFractionDigits="2"/>%</td>
 							</c:if>
 						</tr>
 					</c:forEach>
