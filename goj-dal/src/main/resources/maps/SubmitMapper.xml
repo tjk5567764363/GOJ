@@ -5,6 +5,9 @@
 	<resultMap type="submit" id="submitResultMap" />
 
 	<insert id="createSubmit" parameterType="submit">
+	    <selectKey keyProperty="id" resultType="long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
 		INSERT INTO submit
 		(
 		user_id,
@@ -49,7 +52,20 @@
 		LIMIT #{start_row}, #{page_size}
 	</select>
 
-	<update id="modifySubmit" parameterType="submit"></update>
+	<update id="modifySubmit" parameterType="submit">
+		UPDATE submit
+		<set>
+			<if test="verdict != null">
+				verdict = #{verdict}
+			</if>
+		</set>
+		<where>
+			id = #{id}
+			<if test="verdict != null">
+				verdict != #{verdict}
+			</if>
+		</where>
+	</update>
 
 	<sql id="SelectSubmit">
 		SELECT

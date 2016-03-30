@@ -41,10 +41,10 @@ public class StatusController extends BaseController {
 		submitTemp.setLanguage(lang);
 		submitTemp.setSource_code(source);
 		submitTemp.setLength(source.length());
-		submitBO.createSubmit(submitTemp);
+		Long submitId = submitBO.createSubmit(submitTemp);
 
 		/************* Judge 之后考虑放在task *************/
-		// s.judge(id);
+		s.judge(submitId);
 		/************************************************/
 
 		UserDO userTemp = new UserDO();
@@ -52,7 +52,7 @@ public class StatusController extends BaseController {
 		userTemp.setSubmit(1);
 		userBO.modifyUser(userTemp);
 
-		return WebConstant.STATUS;
+		return "redirect:/goj/status/";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -22,7 +22,7 @@ public interface SubmitDAO {
 	 * @param submit
 	 * @return
 	 */
-	int createSubmit(SubmitDO submit);
+	Long createSubmit(SubmitDO submit);
 
 	/**
 	 * getSubmit

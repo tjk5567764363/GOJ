@@ -25,14 +25,13 @@ public class SubmitBOImpl implements SubmitBO {
 	@Autowired
 	private SubmitDAO submitDAO;
 
-	public int createSubmit(SubmitDO submit) {
+	public Long createSubmit(SubmitDO submit) {
 		AssertUtil.notNull(submit);
 
 		submit.setVerdict(Verdict.Queuing.getValue());
 		submit.setStatus(Status.NOMARL.getValue());
-		submitDAO.createSubmit(submit);
 
-		return 0;
+		return submitDAO.createSubmit(submit);
 	}
 
 	@Transactional(readOnly = true)
@@ -55,4 +54,11 @@ public class SubmitBOImpl implements SubmitBO {
 		return submitDAO.modifySubmit(submit);
 	}
 
+	public int modifySubmitVerdict(Long submitId, Verdict verdict) {
+		SubmitDO submitTemp = new SubmitDO();
+		submitTemp.setId(submitId);
+		submitTemp.setVerdict(verdict.getValue());
+
+		return modifySubmit(submitTemp);
+	}
 }

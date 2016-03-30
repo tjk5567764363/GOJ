@@ -83,6 +83,12 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 
+		<!-- guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
 		<!-- Servlet && Jsp -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

@@ -2,6 +2,7 @@ package com.gzu.taurus.goj.bll.bo.problem.interfaces;
 
 import java.util.List;
 
+import com.gzu.taurus.goj.common.enums.Submit.Verdict;
 import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
 
 /**
@@ -19,7 +20,7 @@ public interface SubmitBO {
 	 * @param submit
 	 * @return
 	 */
-	int createSubmit(SubmitDO submit);
+	Long createSubmit(SubmitDO submit);
 
 	/**
 	 * getSubmit
@@ -50,4 +51,15 @@ public interface SubmitBO {
 	 * @return
 	 */
 	int modifySubmit(SubmitDO submit);
+
+	/**
+	 * modifySubmitVerdict
+	 *
+	 * @Author tangjunkai
+	 * @CreateDate 2016年3月30日
+	 * @param submitId
+	 * @param verdict
+	 * @return
+	 */
+	int modifySubmitVerdict(Long submitId, Verdict verdict);
 }
