@@ -16,7 +16,7 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<title></title>
+<title>GOJ::Status</title>
 </head>
 <body>
 	<jsp:include page="head.jsp" />
@@ -42,7 +42,7 @@
 						<tr>
 							<td>${status.id}</td>
 							<td>${status.user_id}</td>
-							<td>${status.problem_id}</td>
+							<td><a href="/goj/${status.problem_id}">${status.problem_id}</a></td>
 							<c:choose>
 								<c:when test="${status.verdict == 1}">
 									<td class="accepted">Accepted</td>

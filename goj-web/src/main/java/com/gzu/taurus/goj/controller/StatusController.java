@@ -25,6 +25,9 @@ public class StatusController extends BaseController {
 	@Autowired
 	private UserBO userBO;
 
+	@Autowired
+	private Shell s;
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
 	public String createStatus( //
 			@PathVariable("id") Long id, // 题目编号
@@ -39,6 +42,10 @@ public class StatusController extends BaseController {
 		submitTemp.setSource_code(source);
 		submitTemp.setLength(source.length());
 		submitBO.createSubmit(submitTemp);
+
+		/************* Judge 之后考虑放在task *************/
+		// s.judge(id);
+		/************************************************/
 
 		UserDO userTemp = new UserDO();
 		userTemp.setId(getLoginUserId());
