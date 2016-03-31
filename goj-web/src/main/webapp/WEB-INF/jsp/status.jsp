@@ -76,20 +76,24 @@
 									<td>---</td>
 								</c:otherwise>
 							</c:choose>
-							<c:choose>
-								<c:when test="${status.language == 1}">
-									<td>C</td>
-								</c:when>
-								<c:when test="${status.language == 2}">
-									<td>C++</td>
-								</c:when>
-								<c:when test="${status.language == 3}">
-									<td>Java</td>
-								</c:when>
-								<c:otherwise>
-									<td>---</td>
-								</c:otherwise>
-							</c:choose>
+							<td>
+								<a href="javascript:;" data-target="">
+									<c:choose>
+										<c:when test="${status.language == 1}">
+											C
+										</c:when>
+										<c:when test="${status.language == 2}">
+											C++
+										</c:when>
+										<c:when test="${status.language == 3}">
+											Java
+										</c:when>
+										<c:otherwise>
+											<td>---</td>
+										</c:otherwise>
+									</c:choose>
+								</a>
+							</td>
 							<td>${status.length}B</td>
 							<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd HH:mm:ss" type="date" dateStyle="long"/></td>
 						</tr>
