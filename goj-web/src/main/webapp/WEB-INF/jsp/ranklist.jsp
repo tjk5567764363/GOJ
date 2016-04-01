@@ -36,9 +36,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${userList}" var="user">
+					<c:forEach items="${userList}" var="user" varStatus="s">
 						<tr>
-							<td>${user.id}</td>
+							<td>${s.index + 1}</td>
 							<td><a href="/goj/user/${user.account}">${user.account}</a></td>
 							<td>${user.nick_name}</td>
 							<td>${user.signature}</td>

@@ -43,6 +43,7 @@ public class ProblemController extends BaseController {
 			return findProblems(model);
 		} else {
 			model.addAttribute("problem", problemDB);
+			model.addAttribute("menu", "problem");
 			return WebConstant.PROBLEM;
 		}
 	}
@@ -68,6 +69,7 @@ public class ProblemController extends BaseController {
 		}
 
 		model.addAttribute("problemList", problemVOs);
+		model.addAttribute("menu", "problem");
 		return WebConstant.PROBLEMLIST;
 	}
 }

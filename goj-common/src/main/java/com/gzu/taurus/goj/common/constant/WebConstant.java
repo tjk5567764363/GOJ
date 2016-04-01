@@ -21,4 +21,10 @@ public class WebConstant {
 	public static final String ADDCONTEST = "addcontest";
 
 	public static final String RANKLIST = "ranklist";
+
+	// redirect
+
+	public static final String REDIRECTSTATUS = "redirect:/status/";
+
+	public static final String REDIRECT = "redirect:/";
 }

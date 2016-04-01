@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.bll.bo.user.interfaces.UserBO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
@@ -16,6 +17,9 @@ import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
 public class UserController extends BaseController {
 	@Autowired
 	private UserBO userBO;
+
+	@Autowired
+	private ProblemBO problemBO;
 
 	@RequestMapping(value = "/{account}", method = RequestMethod.GET)
 	public String getUser(@PathVariable("account") String account, Model model) {
@@ -31,19 +35,15 @@ public class UserController extends BaseController {
 		}
 	}
 
-	@RequestMapping(value = "/{acount}/{password}/{nickname}", method = RequestMethod.PUT)
-	public String regedit( //
-			@PathVariable("acount") String account, //
-			@PathVariable("password") String password, //
-			@PathVariable("nickname") String nickname, //
-			Model model) {
+	@RequestMapping(method = RequestMethod.POST)
+	public String regedit(UserDO user, Model model) {
 
 		UserDO userTemp = new UserDO();
-		userTemp.setAccount(account);
-		userTemp.setPassword(password);
-		userTemp.setNick_name(nickname);
+		userTemp.setAccount(user.getAccount());
+		userTemp.setPassword(user.getPassword());
+		userTemp.setNick_name(user.getNick_name());
 		userBO.createUser(userTemp);
 
-		return WebConstant.PROBLEMLIST;
+		return WebConstant.REDIRECT;
 	}
 }

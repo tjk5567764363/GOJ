@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -15,10 +16,10 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/goj/">Problem</a></li>
-				<li><a href="/goj/status/">Status</a></li>
-				<li><a href="/goj/ranklist/">RankList</a></li>
-				<li><a href="/goj/contest/">Contest</a></li>
+				<li <c:if test="${menu == 'problem'}">class="active"</c:if>><a href="/goj/">Problem</a></li>
+				<li <c:if test="${menu == 'status'}">class="active"</c:if>><a href="/goj/status/" onclick="">Status</a></li>
+				<li <c:if test="${menu == 'ranklist'}">class="active"</c:if>><a href="/goj/ranklist/">RankList</a></li>
+				<li <c:if test="${menu == 'contest'}">class="active"</c:if>><a href="/goj/contest/">Contest</a></li>
 				<li class="dropdown"></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
@@ -87,28 +88,28 @@
 				</button>
 				<h4 class="modal-title">Regedit</h4>
 			</div>
-			<div class="modal-body">
-				<div class="container-fluid">
-					<form action="#">
+			<form action="/goj/user" method="post">
+				<div class="modal-body">
+					<div class="container-fluid">
 						<div class="form-group">
 							<label>Account</label>
-							<input type="text" class="form-control" placeholder="account"/>
+							<input type="text" name="account" class="form-control" placeholder="account"/>
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" class="form-control" placeholder="password"/>
+							<input type="password" name="password" class="form-control" placeholder="password"/>
 						</div>
 						<div class="form-group">
 							<label>Nickname</label>
-							<input type="text" class="form-control" placeholder="nickname"/>
+							<input type="text" name="nick_name" class="form-control" placeholder="nickname"/>
 						</div>
-					</form>
+					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Regedit</button>
-			</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Regedit</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

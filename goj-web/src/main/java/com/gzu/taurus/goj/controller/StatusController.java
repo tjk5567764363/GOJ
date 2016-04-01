@@ -54,7 +54,7 @@ public class StatusController extends BaseController {
 		userTemp.setSubmit(1);
 		userBO.modifyUser(userTemp);
 
-		return "redirect:/status/";
+		return WebConstant.REDIRECTSTATUS;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -73,6 +73,7 @@ public class StatusController extends BaseController {
 		List<SubmitDO> list = submitBO.findSubmits(new SubmitDO());
 
 		model.addAttribute("statusList", list);
+		model.addAttribute("menu", "status");
 
 		return WebConstant.STATUS;
 	}

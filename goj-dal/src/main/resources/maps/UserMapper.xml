@@ -7,7 +7,6 @@
 	<insert id="createUser" parameterType="user">
 		INSERT INTO user
 		(
-		id,
 		account,
 		password,
 		nick_name,
@@ -24,7 +23,6 @@
 		)
 		VALUES
 		(
-		#{id},
 		#{account},
 		#{password},
 		#{nick_name},

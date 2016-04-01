@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,13 +27,13 @@
 					<h3>${user.account}</h3>
 					<span>${user.nick_name}</span>
 					<ul class="user-info form-group">
-						<li>Rank:<span>555</span></li>
-						<li>Solved:<span>555</span></li>
-						<li>Submissions:<span>555</span></li>
+						<li>Rank:<span></span></li>
+						<li>Solved:<span>${user.solved}</span></li>
+						<li>Submit:<span>${user.submit}</span></li>
 						<li>Email:<span>${user.email}</span></li>
 						<li>School:<span>${user.school}</span></li>
-						<li>Last Login:<span>2015-01-02 11:11:11</span></li>
-						<li>Registered:<span>${user.create_time}</span></li>
+						<li>Last Login:<span><fmt:formatDate value="${user.update_time}" pattern="yyyy-MM-dd HH:mm:ss"/></span></li>
+						<li>Registered:<span><fmt:formatDate value="${user.create_time}" pattern="yyyy-MM-dd HH:mm:ss"/></span></li>
 					</ul>
 				</div>
 			</div>

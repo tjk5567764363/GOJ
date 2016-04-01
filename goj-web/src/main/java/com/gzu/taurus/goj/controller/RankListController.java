@@ -30,6 +30,7 @@ public class RankListController extends BaseController {
 		List<UserDO> list = userBO.findUsers(new UserDO());
 
 		model.addAttribute("userList", list);
+		model.addAttribute("menu", "ranklist");
 
 		return WebConstant.RANKLIST;
 	}

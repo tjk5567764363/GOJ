@@ -77,8 +77,7 @@
 								</c:otherwise>
 							</c:choose>
 							<td>
-								<a href="javascript:;" data-target="">
-									<c:choose>
+								<a href="javascript:;" onclick="$('#modal-code').modal('toggle');$('#modal-code-pre').text($('#hidden-${status.id}').text())"> <c:choose>
 										<c:when test="${status.language == 1}">
 											C
 										</c:when>
@@ -93,9 +92,10 @@
 										</c:otherwise>
 									</c:choose>
 								</a>
+								<pre hidden="true" id="hidden-${status.id}">${status.source_code}</pre>
 							</td>
 							<td>${status.length}B</td>
-							<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd HH:mm:ss" type="date" dateStyle="long"/></td>
+							<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -115,6 +115,25 @@
 					</tr>
 				</tfoot>
 			</table>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-code">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Code</h4>
+				</div>
+				<div class="modal-body">
+					<pre id="modal-code-pre"></pre>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -47,6 +47,7 @@ public class ContestController extends BaseController {
 		List<ContestDO> list = contestBO.findContests(new ContestDO());
 
 		model.addAttribute("contestList", list);
+		model.addAttribute("menu", "contest");
 
 		return WebConstant.CONTEST;
 	}
