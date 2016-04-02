@@ -16,6 +16,8 @@ public class WebConstant {
 
 	public static final String STATUS = "status";
 
+	public static final String CONTESTLIST = "contestlist";
+
 	public static final String CONTEST = "contest";
 
 	public static final String ADDCONTEST = "addcontest";

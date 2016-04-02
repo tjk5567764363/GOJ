@@ -49,7 +49,7 @@ public class ContestController extends BaseController {
 		model.addAttribute("contestList", list);
 		model.addAttribute("menu", "contest");
 
-		return WebConstant.CONTEST;
+		return WebConstant.CONTESTLIST;
 	}
 
 	/**
