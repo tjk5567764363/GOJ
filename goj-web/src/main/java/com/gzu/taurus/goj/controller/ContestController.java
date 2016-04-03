@@ -89,8 +89,8 @@ public class ContestController extends BaseController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/addcontest", method = RequestMethod.GET)
-	public String addContest(Model model) {
+	@RequestMapping(value = "/addcontest", method = RequestMethod.POST)
+	public String addContest(ContestDO contest, Model model) {
 		return WebConstant.ADDCONTEST;
 	}
 }

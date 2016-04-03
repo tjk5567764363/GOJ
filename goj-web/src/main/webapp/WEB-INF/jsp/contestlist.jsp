@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,11 +42,25 @@
 						<c:forEach items="${contestList}" var="contest">
 							<td>${contest.id}</td>
 							<td style="text-align: left;">
-								<a href="/goj/contest/${contest.id}">${contest.title}</a>
+								<c:choose>
+									<c:when test="${contest.type == 1}">
+										<a href="javascript:;" data-toggle="modal" data-target="modal-password">${contest.title}</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/goj/contest/${contest.id}">${contest.title}</a>
+									</c:otherwise>
+								</c:choose>
 							</td>
-							<td>${contest.start_time}</td>
-							<td>${contest.length}</td>
-							<td>${contest.type}</td>
+							<td><fmt:formatDate value="${contest.start_time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+							<td>${contest.duration}</td>
+							<c:choose>
+								<c:when test="${contest.type == 1}">
+									<td class="wrong">Private</td>
+								</c:when>
+								<c:otherwise>
+									<td class="accepted">Public</td>
+								</c:otherwise>
+							</c:choose>
 							<td>${contest.manager}</td>
 						</c:forEach>
 					</tr>
@@ -66,6 +81,26 @@
 					</tr>
 				</tfoot>
 			</table>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="modal-password">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Password</h4>
+				</div>
+				<div class="modal-body">
+					<input type="password" name="password" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

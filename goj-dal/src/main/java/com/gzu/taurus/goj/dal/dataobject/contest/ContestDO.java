@@ -105,7 +105,7 @@ public class ContestDO extends BaseDO {
 	}
 
 	public void setType(Integer type) {
-		type = type;
+		this.type = type;
 	}
 
 	public String getManager() {
