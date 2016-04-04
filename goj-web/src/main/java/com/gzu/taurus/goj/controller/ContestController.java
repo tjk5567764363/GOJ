@@ -18,6 +18,7 @@ import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
 import com.gzu.taurus.goj.bll.vo.problem.ProblemVO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.common.enums.Contest.Type;
+import com.gzu.taurus.goj.common.enums.Submit;
 import com.gzu.taurus.goj.common.enums.Submit.Verdict;
 import com.gzu.taurus.goj.common.exception.BOException;
 import com.gzu.taurus.goj.common.util.BeanUtil;
@@ -94,8 +95,7 @@ public class ContestController extends BaseController {
 
 		ProblemDO problemDB;
 		ProblemVO problemVO;
-		char c = 'A';
-		int i = 0;
+		int no = 65;
 		List<ProblemVO> problemList = Lists.newArrayList();
 		for (ContestProblemDO iter : contestProblemList) {
 			problemVO = new ProblemVO();
@@ -103,7 +103,8 @@ public class ContestController extends BaseController {
 			BeanUtil.copy(problemDB, problemVO);
 
 			SubmitDO submitQuery = new SubmitDO();
-			submitQuery.setProblem_id(iter.getId());
+			submitQuery.setType(Submit.Type.CONTEST.getValue());
+			submitQuery.setProblem_id(iter.getProblem_id());
 			int submit = submitBO.getSubmitCount(submitQuery);
 			submitQuery.setVerdict(Verdict.Accepted.getValue());
 			int solved = submitBO.getSubmitCount(submitQuery);
@@ -113,13 +114,14 @@ public class ContestController extends BaseController {
 			problemVO.setSolved(solved);
 			problemVO.setSubmit(submit);
 			problemVO.setIsSolved(count > 0 ? 1 : 0);
-			problemVO.setContestNo(String.valueOf(c + i++));
+			problemVO.setContestNo(String.valueOf((char) (no++)));
 
 			problemList.add(problemVO);
 		}
 
+		model.addAttribute("contest", contestDB);
 		model.addAttribute("problemList", problemList);
-
+		model.addAttribute("menu", "contest");
 		return WebConstant.CONTEST;
 	}
 
@@ -134,5 +136,23 @@ public class ContestController extends BaseController {
 	@RequestMapping(value = "/addcontest", method = RequestMethod.POST)
 	public String addContest(ContestDO contest, Model model) {
 		return WebConstant.ADDCONTEST;
+	}
+
+	@RequestMapping(value = "/{id}/{pid}", method = RequestMethod.GET)
+	public ProblemDO getContestProblem(//
+			@PathVariable("id") Long id, // 比赛id
+			@PathVariable("pid") Long pid) { // 题目id
+		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(pid));
+		return problemDB;
+	}
+
+	@RequestMapping(value = "/{id}/status", method = RequestMethod.GET)
+	public List<SubmitDO> getContestStatus(//
+			@PathVariable("id") Long id, // 比赛id
+			@PathVariable("pid") Long pid) { // 题目id
+		SubmitDO submitQuery = new SubmitDO();
+		List<SubmitDO> submitList = submitBO.findSubmits(submitQuery);
+
+		return submitList;
 	}
 }

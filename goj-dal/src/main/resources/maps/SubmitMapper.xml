@@ -18,6 +18,7 @@
 		memory,
 		language,
 		length,
+		type,
 		status,
 		create_time,
 		update_time
@@ -32,6 +33,7 @@
 		#{memory},
 		#{language},
 		#{length},
+		#{type},
 		#{status},
 		NOW(),
 		NOW()
@@ -83,6 +85,7 @@
 		memory,
 		language,
 		length,
+		type,
 		status,
 		create_time,
 		update_time
@@ -99,6 +102,9 @@
 			</if>
 			<if test="user_id != null">
 				AND user_id = #{user_id}
+			</if>
+			<if test="type != null">
+				AND type = #{type}
 			</if>
 			<if test="status != null">
 				AND status = #{status}

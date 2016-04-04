@@ -56,14 +56,15 @@
 		</div>
 		<div class="col-md-4">
 			<div class="block block-info block-container">
-				<form action="/goj/status/${problem.id}" method="post" id="f1">
+				<form action="/goj/status/${problem.id}" method="post">
+					<input type="hidden" name="type" value="1" />
 					<div class="form-group forms-group-sm">
 						<label for="pid" class="control-label">Problem</label>
 						<input id="pid" type="text" value="${problem.id}" class="form-control" readonly="readonly">
 					</div>
 					<div class="form-group forms-group-sm">
 						<label for="pid" class="control-label">Language</label> 
-						<select class="form-control input-sm" name="lang">
+						<select class="form-control input-sm" name="language">
 							<option value="1">C</option>
 							<option value="2" selected="selected">C++</option>
 							<option value="3">Java</option>
@@ -71,10 +72,10 @@
 					</div>
 					<div class="form-group forms-group-sm">
 						<label for="pid" class="control-label">Source Code</label>
-						<textarea id="code" rows="15" class="form-control" name="source"></textarea>
+						<textarea id="code" rows="15" class="form-control" name="source_code"></textarea>
 					</div>
 					<div class="form-group">
-						<a href="javascript:;" class="btn btn-default" onclick="$('#f1').submit()">Submit</a>
+						<button type="submit" class="btn btn-default">Submit</button>
 					</div>
 				</form>
 			</div>

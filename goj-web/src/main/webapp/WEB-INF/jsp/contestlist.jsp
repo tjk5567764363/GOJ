@@ -105,12 +105,6 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript">
-		$('.getcontest').click(function() {
-			$('#contentpwd').val('');
-			$('#f').attr('action','/goj/contest/' + $(this).attr('id'));
-			$('#modal-password').modal('toggle');
-		});
-	</script>
+	<script type="text/javascript" src="/goj/static/js/contest.js"></script>
 </body>
 </html>

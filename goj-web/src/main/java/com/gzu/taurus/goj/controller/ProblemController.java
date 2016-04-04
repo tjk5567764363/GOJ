@@ -14,6 +14,7 @@ import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
 import com.gzu.taurus.goj.bll.vo.problem.ProblemVO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
+import com.gzu.taurus.goj.common.enums.Submit;
 import com.gzu.taurus.goj.common.enums.Submit.Verdict;
 import com.gzu.taurus.goj.common.util.BeanUtil;
 import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
@@ -58,6 +59,7 @@ public class ProblemController extends BaseController {
 			BeanUtil.copy(iter, problemVOTemp);
 
 			SubmitDO submitQuery = new SubmitDO();
+			submitQuery.setType(Submit.Type.NO_CONTEST.getValue());
 			submitQuery.setProblem_id(iter.getId());
 			int submit = submitBO.getSubmitCount(submitQuery);
 			submitQuery.setVerdict(Verdict.Accepted.getValue());

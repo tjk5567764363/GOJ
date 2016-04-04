@@ -39,6 +39,9 @@ public class SubmitDO extends BaseDO {
 	/** 代码长度 */
 	private Integer length;
 
+	/** 提交类型 {@link com.gzu.taurus.goj.common.enums.Submit.Type} */
+	private Integer type;
+
 	public SubmitDO() {
 	}
 
@@ -120,5 +123,13 @@ public class SubmitDO extends BaseDO {
 
 	public void setSource_code(String source_code) {
 		this.source_code = source_code;
+	}
+
+	public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
 	}
 }

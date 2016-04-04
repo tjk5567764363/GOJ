@@ -89,4 +89,32 @@ public interface Submit {
 			this.value = value;
 		}
 	}
+
+	/**
+	 * 提交类型
+	 *
+	 * @Author tangjunkai
+	 * @CreateDate 2016年4月4日
+	 */
+	public enum Type {
+		/** 非比赛提交 */
+		NO_CONTEST(1),
+
+		/** 比赛提交 */
+		CONTEST(2);
+
+		Integer value;
+
+		private Type(Integer value) {
+			this.value = value;
+		}
+
+		public Integer getValue() {
+			return value;
+		}
+
+		public void setValue(Integer value) {
+			this.value = value;
+		}
+	}
 }
