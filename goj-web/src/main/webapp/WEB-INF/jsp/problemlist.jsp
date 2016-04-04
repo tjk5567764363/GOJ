@@ -29,7 +29,7 @@
 						<th style="width: 65px;">ID</th>
 						<th style="text-align: left;">Title</th>
 						<th style="width: 160px;">Source</th>
-						<th style="width: 160px;">Ratio(AC/submit)</th>
+						<th style="width: 160px;">Ratio(AC/Submit)</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import com.gzu.taurus.goj.bll.bo.contest.interfaces.ContestProblemBO;
+import com.gzu.taurus.goj.common.enums.Status;
 import com.gzu.taurus.goj.common.util.AssertUtil;
 import com.gzu.taurus.goj.dal.dao.contest.ContestProblemDAO;
 import com.gzu.taurus.goj.dal.dataobject.contest.ContestProblemDO;
@@ -26,12 +28,15 @@ public class ContestProblemBOImpl implements ContestProblemBO {
 	public Long createContestProblem(ContestProblemDO contestProblem) {
 		AssertUtil.notNull(contestProblem);
 
+		contestProblem.setStatus(Status.NOMARL.getValue());
+
 		return null;
 	}
 
 	@Transactional(readOnly = true)
 	public ContestProblemDO getContestProblem(ContestProblemDO contestProblem) {
 		AssertUtil.notNull(contestProblem);
+		Assert.notNull(contestProblem.getId(), "Id不能为空.");
 
 		return contestProblemDAO.getContestProblem(contestProblem);
 	}
@@ -45,6 +50,7 @@ public class ContestProblemBOImpl implements ContestProblemBO {
 
 	public int modifyContestProblem(ContestProblemDO contestProblem) {
 		AssertUtil.notNull(contestProblem);
+		Assert.notNull(contestProblem.getId(), "Id不能为空.");
 
 		return contestProblemDAO.modifyContestProblem(contestProblem);
 	}

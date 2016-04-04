@@ -7,30 +7,16 @@
 	<insert id="createContestProblem" parameterType="contestProblem">
 		INSERT INTO contest_problem
 		(
-		id,
-		account,
-		password,
-		nick_name,
-		signature,
-		age,
-		email,
-		tel,
-		school,
+		contest_id,
+		problem_id,
 		status,
 		create_time,
 		update_time
 		)
 		VALUES
 		(
-		#{id},
-		#{account},
-		#{password},
-		#{nick_name},
-		#{signature},
-		#{age},
-		#{email},
-		#{tel},
-		#{school},
+		#{contest_id},
+		#{problem_id},
 		#{status},
 		NOW(),
 		NOW()
@@ -47,6 +33,8 @@
 	<select id="findContestProblems" parameterType="contestProblem" resultType="contestProblem">
 		<include refid="SelectContestProblem" />
 		<include refid="ContestProblemWhereCondition" />
+		ORDER BY id
+		LIMIT #{start_row}, #{page_size}
 	</select>
 
 	<update id="modifyContestProblem" parameterType="contestProblem"></update>
@@ -54,14 +42,8 @@
 	<sql id="SelectContestProblem">
 		SELECT
 		id,
-		account,
-		password,
-		nick_name,
-		signature,
-		age,
-		email,
-		tel,
-		school,
+		contest_id,
+		problem_id,
 		status,
 		create_time,
 		update_time
@@ -70,6 +52,12 @@
 
 	<sql id="ContestProblemWhereCondition">
 		<where>
+			<if test="contest_id != null">
+				AND contest_id = #{contest_id}
+			</if>
+			<if test="problem_id != null">
+				AND problem_id = #{problem_id}
+			</if>
 			<if test="status != null">
 				AND status = #{status}
 			</if>

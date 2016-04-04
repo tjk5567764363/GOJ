@@ -38,13 +38,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<c:forEach items="${contestList}" var="contest">
+					<c:forEach items="${contestList}" var="contest">
+						<tr>
 							<td>${contest.id}</td>
 							<td style="text-align: left;">
 								<c:choose>
 									<c:when test="${contest.type == 1}">
-										<a href="javascript:;" data-toggle="modal" data-target="modal-password">${contest.title}</a>
+										<a href="javascript:;" class="getcontest" id="${contest.id}">${contest.title}</a>
 									</c:when>
 									<c:otherwise>
 										<a href="/goj/contest/${contest.id}">${contest.title}</a>
@@ -62,8 +62,8 @@
 								</c:otherwise>
 							</c:choose>
 							<td>${contest.manager}</td>
-						</c:forEach>
-					</tr>
+						</tr>
+					</c:forEach>
 				</tbody>
 				<tfoot>
 					<tr>
@@ -85,23 +85,32 @@
 	</div>
 	
 	<div class="modal fade" id="modal-password">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Password</h4>
+		<div class="modal-dialog modal-sm">
+			<form action="/goj/contest/" id="f" method="post">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">Password</h4>
+					</div>
+					<div class="modal-body">
+						<input class="form-control" type="password" name="password" id="contentpwd" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">OK</button>
+					</div>
 				</div>
-				<div class="modal-body">
-					<input type="password" name="password" />
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-				</div>
-			</div>
+			</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$('.getcontest').click(function() {
+			$('#contentpwd').val('');
+			$('#f').attr('action','/goj/contest/' + $(this).attr('id'));
+			$('#modal-password').modal('toggle');
+		});
+	</script>
 </body>
 </html>

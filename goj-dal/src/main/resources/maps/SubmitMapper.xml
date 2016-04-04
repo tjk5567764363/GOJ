@@ -97,6 +97,9 @@
 			<if test="verdict != null">
 				AND verdict = #{verdict}
 			</if>
+			<if test="user_id != null">
+				AND user_id = #{user_id}
+			</if>
 			<if test="status != null">
 				AND status = #{status}
 			</if>
