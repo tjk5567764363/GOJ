@@ -43,9 +43,11 @@
 					<tbody>
 						<c:forEach items="${problemList}" var="problem">
 							<tr>
-								<td><c:if test="${problem.isSolved == 1}">
+								<td>
+									<c:if test="${problem.isSolved == 1}">
 										<span class="glyphicon glyphicon-ok" style="color: green;"></span>
-									</c:if></td>
+									</c:if>
+								</td>
 								<td>${problem.contestNo}</td>
 								<td><a href="/goj/${problem.id}">${problem.id}</a></td>
 								<td style="text-align: left;"><a href="javascript:;" data="${problem.id}" class="problem-title">${problem.title}</a></td>

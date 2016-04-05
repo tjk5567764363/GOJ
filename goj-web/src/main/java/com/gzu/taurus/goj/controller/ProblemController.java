@@ -50,18 +50,21 @@ public class ProblemController extends BaseController {
 		List<ProblemDO> problemlist = problemBO.findProblems(new ProblemDO());
 
 		for (ProblemDO iter : problemlist) {
-			ProblemVO problemVOTemp = new ProblemVO();
-			BeanUtil.copy(iter, problemVOTemp);
+			ProblemVO problemVO = new ProblemVO();
+			BeanUtil.copy(iter, problemVO);
 
 			SubmitDO submitQuery = new SubmitDO();
 			submitQuery.setProblem_id(iter.getId());
 			int submit = submitBO.getSubmitCount(submitQuery);
 			submitQuery.setVerdict(Verdict.Accepted.getValue());
 			int solved = submitBO.getSubmitCount(submitQuery);
+			submitQuery.setUser_id(getLoginUserId());
+			int count = submitBO.getSubmitCount(submitQuery);
 
-			problemVOTemp.setSolved(solved);
-			problemVOTemp.setSubmit(submit);
-			problemVOs.add(problemVOTemp);
+			problemVO.setSolved(solved);
+			problemVO.setSubmit(submit);
+			problemVO.setIsSolved(count > 0 ? 1 : 0);
+			problemVOs.add(problemVO);
 		}
 
 		return getMav(WebConstant.PROBLEMLIST).addObject("problemList", problemVOs);
