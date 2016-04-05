@@ -3,13 +3,17 @@ package com.gzu.taurus.goj.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.gzu.taurus.goj.bll.bo.contest.interfaces.ContestBO;
 import com.gzu.taurus.goj.bll.bo.contest.interfaces.ContestProblemBO;
@@ -35,6 +39,7 @@ import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
  */
 @RestController
 @RequestMapping("/contest")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ContestController extends BaseController {
 	@Autowired
 	private ContestBO contestBO;
@@ -48,38 +53,15 @@ public class ContestController extends BaseController {
 	@Autowired
 	private SubmitBO submitBO;
 
-	/**
-	 * 获取比赛列表
-	 *
-	 * @Author tangjunkai
-	 * @CreateDate 2016年3月29日
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String findContests(Model model) {
-
+	public ModelAndView findContests() {
 		List<ContestDO> list = contestBO.findContests(new ContestDO());
 
-		model.addAttribute("contestList", list);
-		model.addAttribute("menu", "contest");
-
-		return WebConstant.CONTESTLIST;
+		return getMav(WebConstant.CONTESTLIST).addObject("contestList", list);
 	}
 
-	/**
-	 * 进入单个比赛
-	 *
-	 * @Author tangjunkai
-	 * @CreateDate 2016年3月29日
-	 * @param id
-	 * @param pwd
-	 * @param model
-	 * @return
-	 * @throws BOException
-	 */
 	@RequestMapping(value = "/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String getContest(@PathVariable("id") Long id, ContestDO query, Model model) throws BOException {
+	public ModelAndView getContest(@PathVariable("id") Long id, ContestDO query) throws BOException {
 		Assert.notNull(id, "Id不能为空.");
 
 		ContestDO contestDB = contestBO.getContest(new ContestDO(id));
@@ -119,23 +101,12 @@ public class ContestController extends BaseController {
 			problemList.add(problemVO);
 		}
 
-		model.addAttribute("contest", contestDB);
-		model.addAttribute("problemList", problemList);
-		model.addAttribute("menu", "contest");
-		return WebConstant.CONTEST;
+		return getMav(WebConstant.CONTEST).addAllObjects(ImmutableMap.of("contest", contestDB, "problemList", problemList));
 	}
 
-	/**
-	 * 添加一个比赛
-	 *
-	 * @Author tangjunkai
-	 * @CreateDate 2016年3月29日
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value = "/addcontest", method = RequestMethod.POST)
-	public String addContest(ContestDO contest, Model model) {
-		return WebConstant.ADDCONTEST;
+	public ModelAndView addContest(ContestDO contest, Model model) {
+		return getMav(WebConstant.ADDCONTEST);
 	}
 
 	@RequestMapping(value = "/{id}/{pid}", method = RequestMethod.GET)
@@ -147,12 +118,15 @@ public class ContestController extends BaseController {
 	}
 
 	@RequestMapping(value = "/{id}/status", method = RequestMethod.GET)
-	public List<SubmitDO> getContestStatus(//
-			@PathVariable("id") Long id, // 比赛id
-			@PathVariable("pid") Long pid) { // 题目id
+	public List<SubmitDO> getContestStatus(@PathVariable("id") Long id) {
 		SubmitDO submitQuery = new SubmitDO();
 		List<SubmitDO> submitList = submitBO.findSubmits(submitQuery);
 
 		return submitList;
+	}
+
+	@Override
+	ModelAndView doMav(ModelAndView mav) {
+		return mav.addObject(WebConstant.MENU, WebConstant.CONTEST);
 	}
 }

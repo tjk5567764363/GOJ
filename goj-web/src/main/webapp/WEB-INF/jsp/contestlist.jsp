@@ -17,7 +17,7 @@
 	
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<title></title>
+	<title>GOJ::Contest</title>
 </head>
 <body>
 	<jsp:include page="head.jsp" />

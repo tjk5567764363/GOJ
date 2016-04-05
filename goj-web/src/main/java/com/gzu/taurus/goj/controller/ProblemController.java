@@ -3,18 +3,19 @@ package com.gzu.taurus.goj.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.ProblemBO;
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
 import com.gzu.taurus.goj.bll.vo.problem.ProblemVO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
-import com.gzu.taurus.goj.common.enums.Submit;
 import com.gzu.taurus.goj.common.enums.Submit.Verdict;
 import com.gzu.taurus.goj.common.util.BeanUtil;
 import com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO;
@@ -27,6 +28,7 @@ import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
  * @CreateDate 2016年3月30日
  */
 @RestController
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @RequestMapping("/")
 public class ProblemController extends BaseController {
 	@Autowired
@@ -36,21 +38,14 @@ public class ProblemController extends BaseController {
 	private SubmitBO submitBO;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String getProblem(@PathVariable("id") Long id, Model model) {
-
+	public ModelAndView getProblem(@PathVariable("id") Long id) {
 		ProblemDO problemDB = problemBO.getProblem(new ProblemDO(id));
 
-		if (problemDB == null) {
-			return findProblems(model);
-		} else {
-			model.addAttribute("problem", problemDB);
-			model.addAttribute("menu", "problem");
-			return WebConstant.PROBLEM;
-		}
+		return getMav(WebConstant.PROBLEM).addObject("problem", problemDB);
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String findProblems(Model model) {
+	public ModelAndView findProblems() {
 		List<ProblemDO> problemVOs = Lists.newArrayList();
 		List<ProblemDO> problemlist = problemBO.findProblems(new ProblemDO());
 
@@ -59,7 +54,6 @@ public class ProblemController extends BaseController {
 			BeanUtil.copy(iter, problemVOTemp);
 
 			SubmitDO submitQuery = new SubmitDO();
-			submitQuery.setType(Submit.Type.NO_CONTEST.getValue());
 			submitQuery.setProblem_id(iter.getId());
 			int submit = submitBO.getSubmitCount(submitQuery);
 			submitQuery.setVerdict(Verdict.Accepted.getValue());
@@ -70,8 +64,11 @@ public class ProblemController extends BaseController {
 			problemVOs.add(problemVOTemp);
 		}
 
-		model.addAttribute("problemList", problemVOs);
-		model.addAttribute("menu", "problem");
-		return WebConstant.PROBLEMLIST;
+		return getMav(WebConstant.PROBLEMLIST).addObject("problemList", problemVOs);
+	}
+
+	@Override
+	ModelAndView doMav(ModelAndView mav) {
+		return mav.addObject(WebConstant.MENU, WebConstant.PROBLEM);
 	}
 }

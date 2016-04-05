@@ -29,4 +29,7 @@ public class WebConstant {
 	public static final String REDIRECTSTATUS = "redirect:/status/";
 
 	public static final String REDIRECT = "redirect:/";
+
+	// menu
+	public static final String MENU = "menu";
 }
