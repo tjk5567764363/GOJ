@@ -60,7 +60,7 @@ public class StatusController extends BaseController {
 		userTemp.setSubmit(1);
 		userBO.modifyUser(userTemp);
 
-		return getMav(WebConstant.REDIRECTSTATUS);
+		return findStatuss();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -73,7 +73,7 @@ public class StatusController extends BaseController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView findStatuss(Model model) {
+	public ModelAndView findStatuss() {
 		List<SubmitDO> list = submitBO.findSubmits(new SubmitDO());
 
 		return getMav(WebConstant.STATUS).addObject("statusList", list);

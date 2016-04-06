@@ -18,13 +18,21 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<title>GOJ::${contest.title}</title>
+	<style type="text/css">
+		img{
+			width: 100%;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="head.jsp" />
 	<div class="container">
 		<div class="col-md-2">
 			<div class="list-group">
-				<a href="javascript:;" class="list-group-item active" id="l-overview">Overview</a> <a href="javascript:;" class="list-group-item" id="l-problem">Problem</a> <a href="javascript:;" class="list-group-item" id="l-status">Status</a> <a href="javascript:;" class="list-group-item" id="l-ranklist">Ranklist</a>
+				<a href="javascript:;" class="p list-group-item active" id="l-overview">Overview</a> 
+				<a href="javascript:;" class="p list-group-item" id="l-problem">Problem</a> 
+				<a href="javascript:;" class="p list-group-item" id="l-status">Status</a> 
+				<a href="javascript:;" class="p list-group-item" id="l-ranklist">Ranklist</a>
 			</div>
 		</div>
 		<div class="col-md-10">
@@ -86,7 +94,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-md-1">
+					<div class="list-group">
+						<c:forEach items="${problemList}" var="problem">
+					  		<a href="javascript:;" class="p-list list-group-item" id="list-group-${problem.id}">${problem.contestNo}</a>
+					  	</c:forEach>
+					</div>
+				</div>
 				<div class="col-md-10">
 					<div class="block block-info block-container">
 						<form action="#" method="post" id="p-form">
@@ -112,8 +126,105 @@
 					</div>
 				</div>
 			</div>
-			<div id="status" style="display: none;" class="content"></div>
-			<div id="ranklist" style="display: none;" class="content"></div>
+			<div id="status" style="display: none;" class="content">
+				<div class="col-md-12">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>RunID</th>
+								<th>User</th>
+								<th>Problem</th>
+								<th>Verdict</th>
+								<th>Time</th>
+								<th>Memory</th>
+								<th>Language</th>
+								<th>Length</th>
+								<th>Submit Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${statusList}" var="status">
+								<tr>
+									<td>${status.id}</td>
+									<td>${status.user_id}</td>
+									<td><a href="/goj/${status.problem_id}">${status.problem_id}</a></td>
+									<c:choose>
+										<c:when test="${status.verdict == 1}">
+											<td class="accepted">Accepted</td>
+										</c:when>
+										<c:when test="${status.verdict == 0}">
+											<td class="wrong">Wrong Answer</td>
+										</c:when>
+										<c:when test="${status.verdict == 2}">
+											<td class="queuing">Queuing</td>
+										</c:when>
+										<c:when test="${status.verdict == 3}">
+											<td class="wrong">Compile_Error</td>
+										</c:when>
+										<c:otherwise>
+											<td class="error">Error</td>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${status.time != null}">
+											<td>${status.time}</td>
+										</c:when>
+										<c:otherwise>
+											<td>---</td>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${status.memory != null}">
+											<td>${status.memory}</td>
+										</c:when>
+										<c:otherwise>
+											<td>---</td>
+										</c:otherwise>
+									</c:choose>
+									<td>
+										<a href="javascript:;" onclick="$('#modal-code').modal('toggle');$('#modal-code-pre').text($('#hidden-${status.id}').text())"> <c:choose>
+												<c:when test="${status.language == 1}">
+													C
+												</c:when>
+												<c:when test="${status.language == 2}">
+													C++
+												</c:when>
+												<c:when test="${status.language == 3}">
+													Java
+												</c:when>
+												<c:otherwise>
+													<td>---</td>
+												</c:otherwise>
+											</c:choose>
+										</a>
+										<pre hidden="true" id="hidden-${status.id}"><c:out value="${status.source_code}" escapeXml="true"></c:out></pre>
+									</td>
+									<td>${status.length}B</td>
+									<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="9" class="odd">
+									<nav>
+										<ul class="pagination" style="margin: 0px;">
+											<li><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											</a></li>
+											<li><a href="#">1</a></li>
+											<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											</a></li>
+										</ul>
+									</nav>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+			<div id="ranklist" style="display: none;" class="content">
+				<div class="col-md-12"></div>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="/goj/static/js/contest.js"></script>

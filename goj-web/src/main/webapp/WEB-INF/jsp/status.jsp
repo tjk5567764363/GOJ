@@ -92,7 +92,7 @@
 										</c:otherwise>
 									</c:choose>
 								</a>
-								<pre hidden="true" id="hidden-${status.id}">${status.source_code}</pre>
+								<pre hidden="true" id="hidden-${status.id}"><c:out value="${status.source_code}" escapeXml="true"></c:out></pre>
 							</td>
 							<td>${status.length}B</td>
 							<td><fmt:formatDate value="${status.create_time}" pattern="yyyy-MM-dd HH:mm:ss" /></td>

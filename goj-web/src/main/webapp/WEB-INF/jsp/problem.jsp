@@ -16,6 +16,11 @@
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<title>GOJ::Problem ${problem.id}</title>
+	<style type="text/css">
+		img{
+			width: 100%;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="head.jsp" />
