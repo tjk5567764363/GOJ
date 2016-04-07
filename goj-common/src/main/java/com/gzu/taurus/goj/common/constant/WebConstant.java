@@ -24,6 +24,10 @@ public class WebConstant {
 
 	public static final String RANKLIST = "ranklist";
 
+	public static final String SHARE = "share";
+
+	public static final String SHARECONTENT = "sharecontent";
+
 	// redirect
 
 	public static final String REDIRECTSTATUS = "redirect:/status/";

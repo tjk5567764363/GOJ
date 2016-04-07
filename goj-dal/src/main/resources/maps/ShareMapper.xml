@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzu.taurus.goj.dal.dao.share.ShareDAO">
+	
+	<resultMap type="share" id="shareResultMap"/>
+
+	<insert id="createShare" parameterType="share">
+		<selectKey keyProperty="id" resultType="long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+		INSERT INTO share
+		(
+		id,
+		user_id,
+		problem_id,
+		title,
+		syntax,
+		theme,
+		content,
+		status,
+		create_time,
+		update_time
+		)
+		VALUES
+		(
+		#{id},
+		#{user_id},
+		#{problem_id},
+		#{title},
+		#{syntax},
+		#{theme},
+		#{content},
+		#{status},
+		NOW(),
+		NOW()
+		)
+	</insert>
+
+	<select id="getShare" parameterType="share" resultType="share">
+		<include refid="SelectShare" />
+		<where>
+			id = #{id}
+		</where>
+	</select>
+
+	<select id="findShares" parameterType="share" resultType="share">
+		<include refid="SelectShare" />
+		<include refid="ShareWhereCondition" />
+		ORDER BY update_time
+		LIMIT #{start_row}, #{page_size}
+	</select>
+
+	<update id="modifyShare" parameterType="share"></update>
+
+	<sql id="SelectShare">
+		SELECT
+		id,
+		user_id,
+		problem_id,
+		title,
+		syntax,
+		theme,
+		content,
+		status,
+		create_time,
+		update_time
+		FROM share
+	</sql>
+
+	<sql id="ShareWhereCondition">
+		<where>
+			<if test="status != null">
+				AND status = #{status}
+			</if>
+		</where>
+	</sql>
+</mapper>  

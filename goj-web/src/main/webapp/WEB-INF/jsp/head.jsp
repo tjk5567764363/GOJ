@@ -20,6 +20,7 @@
 				<li <c:if test="${menu == 'status'}">class="active"</c:if>><a href="/goj/status/" onclick="">Status</a></li>
 				<li <c:if test="${menu == 'ranklist'}">class="active"</c:if>><a href="/goj/ranklist/">RankList</a></li>
 				<li <c:if test="${menu == 'contest'}">class="active"</c:if>><a href="/goj/contest/">Contest</a></li>
+				<li <c:if test="${menu == 'share'}">class="active"</c:if>><a href="/goj/share/">Share</a></li>
 				<li class="dropdown"></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">

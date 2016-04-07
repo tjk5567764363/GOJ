@@ -2,10 +2,18 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<!-- user -->
 		<typeAlias alias="user" type="com.gzu.taurus.goj.dal.dataobject.user.UserDO"/>
+		
+		<!-- problem -->
 		<typeAlias alias="problem" type="com.gzu.taurus.goj.dal.dataobject.problem.ProblemDO"/>
 		<typeAlias alias="submit" type="com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO"/>
+		
+		<!-- contest -->
 		<typeAlias alias="contest" type="com.gzu.taurus.goj.dal.dataobject.contest.ContestDO"/>
 		<typeAlias alias="contestProblem" type="com.gzu.taurus.goj.dal.dataobject.contest.ContestProblemDO"/>
+		
+		<!-- share -->
+		<typeAlias alias="share" type="com.gzu.taurus.goj.dal.dataobject.share.ShareDO"/>
 	</typeAliases>
 </configuration>
