@@ -32,6 +32,8 @@ public class WebConstant {
 
 	public static final String REDIRECTSTATUS = "redirect:/status/";
 
+	public static final String REDIRECTSHARECONTENT = "redirect:/share/%s";
+
 	public static final String REDIRECT = "redirect:/";
 
 	// menu

@@ -27,5 +27,10 @@ public abstract class BaseController {
 		return doMav(mav);
 	}
 
+	public ModelAndView getMavRedir(String view) {
+		mav = new ModelAndView(view);
+		return mav;
+	}
+
 	abstract ModelAndView doMav(ModelAndView mav);
 }

@@ -25,10 +25,10 @@
 		<c:when test="${share.theme == 0}">
 			<link href="/goj/static/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
 		</c:when>
-		<c:when test="${share.theme == 0}">
+		<c:when test="${share.theme == 1}">
 			<link href="/goj/static/css/shThemeEclipse.css" rel="stylesheet" type="text/css" />
 		</c:when>
-		<c:when test="${share.theme == 0}">
+		<c:when test="${share.theme == 2}">
 			<link href="/goj/static/css/shThemeMidnight.css" rel="stylesheet" type="text/css" />
 		</c:when>
 		<c:otherwise>
@@ -37,7 +37,7 @@
 	</c:choose>
 	
 	<script type="text/javascript">
-		SyntaxHighlighter.all()
+		SyntaxHighlighter.all();
 	</script>
 	
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -49,23 +49,17 @@
 	<div class="container">
 		<div class="block block-info">
 			<div class="block-container">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<c:choose>
-						<c:when test="${share.syntax == 1 || share.syntax == 2}">
-							<pre class="brush: cpp">
-						</c:when>
-						<c:when test="${share.syntax == 3}">
-							<pre class="brush: java">
-						</c:when>
-						<c:otherwise>
-							<pre>
-						</c:otherwise>
-					</c:choose>
-					${share.content}
-					</pre>
-				</div>
-				<div class="col-md-2"></div>
+				<c:choose>
+					<c:when test="${share.syntax == 1 || share.syntax == 2}">
+						<pre class="brush: cpp"><c:out value="${share.content}" escapeXml="true"></c:out></pre>
+					</c:when>
+					<c:when test="${share.syntax == 3}">
+						<pre class="brush: java"><c:out value="${share.content}" escapeXml="true"></c:out></pre>
+					</c:when>
+					<c:otherwise>
+						<pre><c:out value="${share.content}" escapeXml="true"></c:out></pre>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

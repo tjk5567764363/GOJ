@@ -13,12 +13,23 @@ import com.gzu.taurus.goj.bll.bo.share.interfaces.ShareBO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
 import com.gzu.taurus.goj.dal.dataobject.share.ShareDO;
 
+/**
+ * ShareController
+ *
+ * @Author tangjunkai
+ * @CreateDate 2016年4月7日
+ */
 @RestController
 @RequestMapping("/share")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ShareController extends BaseController {
 	@Autowired
 	private ShareBO shareBO;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView share() {
+		return getMav(WebConstant.SHARE);
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ModelAndView getShare(@PathVariable("id") Long id) {
@@ -37,9 +48,9 @@ public class ShareController extends BaseController {
 		shareTemp.setTheme(share.getTheme());
 		shareTemp.setContent(share.getContent());
 
-		Long id = shareBO.createShare(share);
+		Long id = shareBO.createShare(shareTemp);
 
-		return getShare(id);
+		return getMavRedir(String.format(WebConstant.REDIRECTSHARECONTENT, id));
 	}
 
 	@Override

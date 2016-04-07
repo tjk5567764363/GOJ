@@ -60,7 +60,7 @@ public class StatusController extends BaseController {
 		userTemp.setSubmit(1);
 		userBO.modifyUser(userTemp);
 
-		return findStatuss();
+		return getMavRedir(WebConstant.REDIRECTSTATUS);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

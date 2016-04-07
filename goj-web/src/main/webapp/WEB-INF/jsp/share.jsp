@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="block block-info">
 			<div class="block-container">
-				<form action="/goj/share" method="post" class="form-horizontal">
+				<form action="/goj/share/" method="post" class="form-horizontal">
 					<br/>
 					<div class="form-group">
 						<label class="col-sm-3 control-label">Title :</label>
