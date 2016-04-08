@@ -29,12 +29,13 @@ public class WebConstant {
 	public static final String SHARECONTENT = "sharecontent";
 
 	// redirect
-
-	public static final String REDIRECTSTATUS = "redirect:/status/";
-
-	public static final String REDIRECTSHARECONTENT = "redirect:/share/%s";
-
 	public static final String REDIRECT = "redirect:/";
+
+	public static final String REDIRECTSTATUS = REDIRECT + "status/";
+
+	public static final String REDIRECTSHARECONTENT = REDIRECT + "share/%s";
+
+	public static final String REDIRECTUSER = REDIRECT + "user/%s";
 
 	// menu
 	public static final String MENU = "menu";

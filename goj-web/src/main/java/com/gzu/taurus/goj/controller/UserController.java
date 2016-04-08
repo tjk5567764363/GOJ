@@ -39,7 +39,7 @@ public class UserController extends BaseController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String regedit(UserDO user, Model model) {
+	public ModelAndView regedit(UserDO user, Model model) {
 
 		UserDO userTemp = new UserDO();
 		userTemp.setAccount(user.getAccount());
@@ -47,7 +47,7 @@ public class UserController extends BaseController {
 		userTemp.setNick_name(user.getNick_name());
 		userBO.createUser(userTemp);
 
-		return WebConstant.REDIRECT;
+		return getMavRedir(String.format(WebConstant.REDIRECTUSER, user.getAccount()));
 	}
 
 	@Override

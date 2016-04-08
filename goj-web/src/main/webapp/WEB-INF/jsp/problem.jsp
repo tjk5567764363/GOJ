@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +32,7 @@
 				<div class="block block-container">
 					<h3 class="problem-header">${problem.title}</h3>
 					<div class="prob-info">
-						<span>Time Limit: 2000/1000MS (Java/Others) Memory Limit: 128000/64000KB (Java/Others)</span>
+						<span>Time Limit: ${problem.time_limit*2}/${problem.time_limit}MS (Java/Others) Memory Limit: ${problem.memory_limit*2}/${problem.memory_limit}KB (Java/Others)</span>
 					</div>
 					<h4>Problem Description</h4>
 					<div class="prob-content">
