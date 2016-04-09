@@ -122,6 +122,11 @@
 				<artifactId>spring-orm</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>1.7.1.RELEASE</version>
+			</dependency>
 
 			<!-- Mybatis -->
 			<dependency>
@@ -224,7 +229,7 @@
 				<artifactId>activemq-broker</artifactId>
 				<version>5.13.2</version>
 			</dependency>
-			
+
 			<!-- Redis -->
 			<dependency>
 				<groupId>redis.clients</groupId>
@@ -259,5 +264,6 @@
 		<module>goj-dal</module>
 		<module>goj-bll</module>
 		<module>goj-web</module>
+		<module>goj-cache</module>
 	</modules>
 </project>

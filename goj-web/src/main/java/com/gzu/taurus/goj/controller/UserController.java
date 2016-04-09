@@ -40,7 +40,6 @@ public class UserController extends BaseController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView regedit(UserDO user, Model model) {
-
 		UserDO userTemp = new UserDO();
 		userTemp.setAccount(user.getAccount());
 		userTemp.setPassword(user.getPassword());
