@@ -30,8 +30,11 @@ public class SysEventQueueDO extends BaseDO {
 	/** 处理次数，每次处理完回写时加1 */
 	private int process_cnt;
 
-	/** 处理时间 */
-	private String process_time;
+	/** 处理开始时间 */
+	private String process_begin_time;
+
+	/** 处理结束时间 */
+	private String process_end_time;
 
 	public SysEventQueueDO() {
 		super();
@@ -94,11 +97,19 @@ public class SysEventQueueDO extends BaseDO {
 		this.process_cnt = process_cnt;
 	}
 
-	public String getProcess_time() {
-		return process_time;
+	public String getProcess_begin_time() {
+		return process_begin_time;
 	}
 
-	public void setProcess_time(String process_time) {
-		this.process_time = process_time;
+	public void setProcess_begin_time(String process_begin_time) {
+		this.process_begin_time = process_begin_time;
+	}
+
+	public String getProcess_end_time() {
+		return process_end_time;
+	}
+
+	public void setProcess_end_time(String process_end_time) {
+		this.process_end_time = process_end_time;
 	}
 }
