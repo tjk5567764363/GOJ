@@ -26,7 +26,7 @@
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
-						<th style="width: 65px;"></th>
+						<th style="width: 65px;">#</th>
 						<th style="width: 65px;">ID</th>
 						<th style="text-align: left;">Title</th>
 						<th style="width: 160px;">Source</th>
@@ -35,7 +35,7 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${problemList}" var="problem">
-						<tr>
+						<tr <c:if test="${problem.isSolved == 1}">class="success"</c:if>>
 							<td>
 								<c:if test="${problem.isSolved == 1}">
 									<span class="glyphicon glyphicon-ok" style="color: green;"></span>

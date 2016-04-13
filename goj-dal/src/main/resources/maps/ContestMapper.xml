@@ -5,7 +5,7 @@
 	<resultMap type="contest" id="contestResultMap"/>
 
 	<insert id="createContest" parameterType="contest">
-		INSERT INTO contest
+		INSERT INTO CONTEST
 		(
 		id,
 		title,
@@ -67,7 +67,7 @@
 		status,
 		create_time,
 		update_time
-		FROM contest
+		FROM CONTEST
 	</sql>
 
 	<sql id="ContestWhereCondition">

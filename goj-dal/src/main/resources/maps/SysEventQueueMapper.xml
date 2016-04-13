@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzu.taurus.goj.dal.dao.sys.SysEventQueueDAO">
+	
+	<resultMap type="sysEventQueue" id="sysEventQueueResultMap"/>
+
+	<insert id="createSysEventQueue" parameterType="sysEventQueue">
+		INSERT INTO SYS_EVENT_QUEUE
+		(
+		user_id,
+		event_type,
+		event_data,
+		process_status,
+		process_cnt,
+		process_begin_time,
+		process_end_time,
+		status,
+		create_time,
+		update_time
+		)
+		VALUES
+		(
+		#{user_id},
+		#{event_type},
+		#{event_data},
+		#{process_status},
+		#{process_cnt},
+		#{process_begin_time},
+		#{process_end_time},
+		#{status},
+		NOW(),
+		NOW()
+		)
+	</insert>
+
+	<select id="getSysEventQueue" parameterType="sysEventQueue" resultType="sysEventQueue">
+		<include refid="SelectSysEventQueue" />
+		<where>
+			id = #{id}
+		</where>
+	</select>
+
+	<select id="findSysEventQueues" parameterType="sysEventQueue" resultType="sysEventQueue">
+		<include refid="SelectSysEventQueue" />
+		<include refid="SysEventQueueWhereCondition" />
+		ORDER BY create_time
+		LIMIT #{start_row}, #{page_size}
+	</select>
+
+	<update id="modifySysEventQueue" parameterType="sysEventQueue"></update>
+
+	<sql id="SelectSysEventQueue">
+		SELECT
+		id,
+		user_id,
+		event_type,
+		event_data,
+		process_status,
+		process_cnt,
+		process_begin_time,
+		process_end_time,
+		status,
+		create_time,
+		update_time
+		FROM SYS_EVENT_QUEUE
+	</sql>
+
+	<sql id="SysEventQueueWhereCondition">
+		<where>
+			<if test="event_type">
+				AND event_type = #{event_type}
+			</if>
+			<if test="status != null">
+				AND status = #{status}
+			</if>
+		</where>
+	</sql>
+</mapper>  

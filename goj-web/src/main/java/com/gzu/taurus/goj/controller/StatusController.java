@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gzu.taurus.goj.bll.bo.problem.interfaces.SubmitBO;
+import com.gzu.taurus.goj.bll.bo.sys.interfaces.SysEventQueueBO;
 import com.gzu.taurus.goj.bll.bo.user.interfaces.UserBO;
 import com.gzu.taurus.goj.common.constant.WebConstant;
+import com.gzu.taurus.goj.common.enums.Submit.Verdict;
+import com.gzu.taurus.goj.common.enums.SysEventQueue.EventType;
 import com.gzu.taurus.goj.dal.dataobject.problem.SubmitDO;
+import com.gzu.taurus.goj.dal.dataobject.sys.SysEventQueueDO;
 import com.gzu.taurus.goj.dal.dataobject.user.UserDO;
 
 /**
@@ -35,6 +39,9 @@ public class StatusController extends BaseController {
 	private UserBO userBO;
 
 	@Autowired
+	private SysEventQueueBO sysEventQueueBO;
+
+	@Autowired
 	private Shell s;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
@@ -52,10 +59,23 @@ public class StatusController extends BaseController {
 		boolean result = s.judge(submitId);
 		/************************************************/
 
+		/***
+		SysEventQueueDO eventQueueTemp = new SysEventQueueDO();
+		eventQueueTemp.setUser_id(getLoginUserId());
+		eventQueueTemp.setEvent_type(EventType.JUDGE.getValue());
+		sysEventQueueBO.createSysEventQueue(eventQueueTemp);
+		**/
+
 		UserDO userTemp = new UserDO();
 		userTemp.setId(getLoginUserId());
 		if (result) {
-			userTemp.setSolved(1);
+			SubmitDO submiQuery = new SubmitDO();
+			submiQuery.setUser_id(getLoginUserId());
+			submiQuery.setProblem_id(id);
+			submiQuery.setVerdict(Verdict.Accepted.getValue());
+			if (submitBO.getSubmitCount(submiQuery) == 0) {
+				userTemp.setSolved(1);
+			}
 		}
 		userTemp.setSubmit(1);
 		userBO.modifyUser(userTemp);

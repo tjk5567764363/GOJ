@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gzu.taurus.goj.dal.dao.problem.SubmitDAO">
-	
+
 	<resultMap type="submit" id="submitResultMap" />
 
 	<insert id="createSubmit" parameterType="submit">
-	    <selectKey keyProperty="id" resultType="long">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-		INSERT INTO submit
+		<selectKey keyProperty="id" resultType="long">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO SUBMIT
 		(
 		user_id,
 		problem_id,
@@ -46,9 +46,9 @@
 			id = #{id}
 		</where>
 	</select>
-	
+
 	<select id="getSubmitCount" parameterType="submit" resultType="int">
-		SELECT COUNT(*) FROM submit
+		SELECT COUNT(*) FROM SUBMIT
 		<include refid="SubmitWhereCondition" />
 	</select>
 
@@ -60,7 +60,7 @@
 	</select>
 
 	<update id="modifySubmit" parameterType="submit">
-		UPDATE submit
+		UPDATE SUBMIT
 		<set>
 			<if test="verdict != null">
 				verdict = #{verdict}
@@ -89,19 +89,19 @@
 		status,
 		create_time,
 		update_time
-		FROM submit
+		FROM SUBMIT
 	</sql>
 
 	<sql id="SubmitWhereCondition">
 		<where>
+			<if test="user_id != null">
+				AND user_id = #{user_id}
+			</if>
 			<if test="problem_id != null">
 				AND problem_id = #{problem_id}
 			</if>
 			<if test="verdict != null">
 				AND verdict = #{verdict}
-			</if>
-			<if test="user_id != null">
-				AND user_id = #{user_id}
 			</if>
 			<if test="type != null">
 				AND type = #{type}

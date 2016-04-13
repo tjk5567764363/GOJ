@@ -8,7 +8,7 @@
 		<selectKey keyProperty="id" resultType="long">
             SELECT LAST_INSERT_ID()
         </selectKey>
-		INSERT INTO share
+		INSERT INTO SHARE
 		(
 		id,
 		user_id,
@@ -64,7 +64,7 @@
 		status,
 		create_time,
 		update_time
-		FROM share
+		FROM SHARE
 	</sql>
 
 	<sql id="ShareWhereCondition">

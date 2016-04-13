@@ -18,10 +18,10 @@ public class SysEventQueueDO extends BaseDO {
 	/** 用户Id */
 	private Long user_id;
 
-	/** 事件类型 */
-	private String event_type;
+	/** 事件类型 {@link com.gzu.taurus.goj.common.enums.SysEventQueue.EventType} */
+	private Integer event_type;
 
-	/** json格式存储 */
+	/** 事件数据（json格式存储） */
 	private String event_data;
 
 	/** 状态：0：待处理 1：处理中 2：正常处理结束 3：处理出现异常 */
@@ -40,7 +40,7 @@ public class SysEventQueueDO extends BaseDO {
 		super();
 	}
 
-	public SysEventQueueDO(String event_type) {
+	public SysEventQueueDO(Integer event_type) {
 		super();
 		this.event_type = event_type;
 	}
@@ -65,11 +65,11 @@ public class SysEventQueueDO extends BaseDO {
 		this.user_id = user_id;
 	}
 
-	public String getEvent_type() {
+	public Integer getEvent_type() {
 		return event_type;
 	}
 
-	public void setEvent_type(String event_type) {
+	public void setEvent_type(Integer event_type) {
 		this.event_type = event_type;
 	}
 

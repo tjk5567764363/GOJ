@@ -5,7 +5,7 @@
 	<resultMap type="problem" id="problemResultMap" />
 
 	<insert id="createProblem" parameterType="problem">
-		INSERT INTO problem
+		INSERT INTO PROBLEM
 		(
 		title,
 		description,
@@ -76,7 +76,7 @@
 		status,
 		create_time,
 		update_time
-		FROM problem
+		FROM PROBLEM
 	</sql>
 
 	<sql id="ProblemWhereCondition">

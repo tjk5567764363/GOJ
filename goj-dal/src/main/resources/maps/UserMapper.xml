@@ -5,7 +5,7 @@
 	<resultMap type="user" id="userResultMap" />
 
 	<insert id="createUser" parameterType="user">
-		INSERT INTO user
+		INSERT INTO USER
 		(
 		account,
 		password,
@@ -54,7 +54,7 @@
 	</select>
 
 	<update id="modifyUser" parameterType="user">
-		UPDATE user
+		UPDATE USER
 		<set>
 			<if test="submit != null">
 				submit = submit + #{submit},
@@ -84,7 +84,7 @@
 		status,
 		create_time,
 		update_time
-		FROM user
+		FROM USER
 	</sql>
 
 	<sql id="UserWhereCondition">

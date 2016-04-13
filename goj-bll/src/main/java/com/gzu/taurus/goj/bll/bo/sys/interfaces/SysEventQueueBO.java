@@ -1,19 +1,16 @@
-package com.gzu.taurus.goj.dal.dao.sys;
+package com.gzu.taurus.goj.bll.bo.sys.interfaces;
 
 import java.util.List;
-
-import org.springframework.stereotype.Repository;
 
 import com.gzu.taurus.goj.dal.dataobject.sys.SysEventQueueDO;
 
 /**
- * SysEventQueueDAO
+ * SysEventQueueBO
  *
  * @Author tangjunkai
- * @CreateDate 2016年3月29日
+ * @CreateDate 2016年4月13日
  */
-@Repository
-public interface SysEventQueueDAO {
+public interface SysEventQueueBO {
 	/**
 	 * createSysEventQueue
 	 *
@@ -22,7 +19,7 @@ public interface SysEventQueueDAO {
 	 * @param eventQueue
 	 * @return
 	 */
-	int createSysEventQueue(SysEventQueueDO eventQueue);
+	long createSysEventQueue(SysEventQueueDO eventQueue);
 
 	/**
 	 * getSysEventQueue

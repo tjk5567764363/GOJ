@@ -15,5 +15,8 @@
 		
 		<!-- share -->
 		<typeAlias alias="share" type="com.gzu.taurus.goj.dal.dataobject.share.ShareDO"/>
+		
+		<!-- sys -->	
+		<typeAlias alias="sysEventQueue" type="com.gzu.taurus.goj.dal.dataobject.sys.SysEventQueueDO"/>
 	</typeAliases>
 </configuration>
